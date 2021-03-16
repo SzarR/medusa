@@ -1,0 +1,19 @@
+Package: medusa
+Title: Automating SIOP Membership Analytics
+Version: 0.0.0.9000
+Authors@R: 
+    c(person(given = "Robert",
+           family = "Szarek",
+           role = c("aut","cre"),
+           email = "szarekr@gmail.com"),
+    person(given = "Jaclyn",
+           family = "Martin",
+           role = "aut",
+           email = "test@gmail.com"))
+Description: For further information on the processing of information
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+Imports: dplyr, magrittr, lubridate, stringr
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.1
