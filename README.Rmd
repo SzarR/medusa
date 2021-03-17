@@ -84,5 +84,5 @@ the merge to obtain the resultant data table for the given SIOP year.
 #data_final <- make_final_data(demo = demo, dues = dues)
 ```
 
-This final dataset is the cleaned dataset with the resulting columns we believe
-are relevant for further analyses. 
+This final dataset is the cleaned dataset with the resulting columns relevant 
+for further analyses. 

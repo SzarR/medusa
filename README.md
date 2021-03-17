@@ -61,8 +61,20 @@ demographic file that is ready to be merged with dues information:
 ```
 
 Next, we combine multiple dues files into a single file to then merge
-with the demographics data, this happens in the code below:
+with the demographics data, and also parses the columns and cleans them
+as well:
 
 ``` r
-#dues <- make_dues_data(df = demo_raw, year = 2020)
+#dues <- make_dues(dues_0520, dues_0620, ..., year = 2020)
 ```
+
+Finally, once the demo and dues files have been staged accordingly, we
+can run the merge to obtain the resultant data table for the given SIOP
+year.
+
+``` r
+#data_final <- make_final_data(demo = demo, dues = dues)
+```
+
+This final dataset is the cleaned dataset with the resulting columns
+relevant for further analyses.

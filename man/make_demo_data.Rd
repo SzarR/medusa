@@ -13,7 +13,7 @@ make_demo_data(df, ...)
 \item{...}{detailed_types for ethnicity breakdown, default is FALSE}
 }
 \value{
-a tibble with all demograpic columns cleaned
+a tibble with all demographic columns cleaned
 }
 \description{
 A function wrapper that executes all functions related to cleaning the
