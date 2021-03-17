@@ -1,3 +1,12 @@
+#' Cleans a variety of columns in dues data
+#'
+#' @param df a tibble of dues data
+#' @param year the SIOP year to filter data on
+#'
+#' @return a tibble of SIDs applicable for the given year selected.
+#' @export
+#'
+#' @examples #dues_cleaned <- step_dues(df = dues_cleaned, year = 2020)
 step_dues <- function(df, year) {
 
   year <- as.numeric(year)
@@ -71,36 +80,36 @@ step_dues <- function(df, year) {
   # Count membership per specific year.
   df <-
     df %>%
-    mutate(InvoiceDate = as.Date(InvoiceDate)) %>%
+    mutate(InvoiceDate = as.Date(.data$InvoiceDate)) %>%
     mutate(
       year_filter =
         case_when(
-          InvoiceDate >= paste0(year - 1, '-03-01') &
-            InvoiceDate <= paste0(year, '-06-30') ~ 1,
+          .data$InvoiceDate >= paste0(year - 1, '-03-01') &
+            .data$InvoiceDate <= paste0(year, '-06-30') ~ 1,
           TRUE ~ 0
         )
     ) %>%
-    filter(year_filter == 1)
+    filter(.data$year_filter == 1)
 
   df <-
     df %>%
-    filter(Canceled == 0) #%>%
+    filter(.data$Canceled == 0) #%>%
 
   df <-
     df %>%
-    mutate(Expire_Year = lubridate::year(Expiration))
+    mutate(Expire_Year = lubridate::year(.data$Expiration))
 
   df <-
     df %>%
-    select(SID,
-           InvoiceDate,
-           Membership_Dues,
-           MD_Number,
-           Student_Prof,
-           Expire_Year,
-           InvoiceDate,
-           Canceled,
-           CanceledDate
+    select(.data$SID,
+           .data$InvoiceDate,
+           .data$Membership_Dues,
+           .data$MD_Number,
+           .data$Student_Prof,
+           .data$Expire_Year,
+           .data$InvoiceDate,
+           .data$Canceled,
+           .data$CanceledDate
     )
 
   return(df)

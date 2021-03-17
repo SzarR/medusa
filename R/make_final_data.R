@@ -1,3 +1,13 @@
+#' A function wrapper that takes the cleaned dues and demo data and merges it,
+#' and cleans by SID, and finalizes a cleaned dataset ready for further analysis.
+#'
+#' @param demo a tibble of demo data. The output from make_demo_data()
+#' @param dues a tibble of dues data. The output from make_dues_data()
+#'
+#' @return a tibble of SIOP members for the current year.
+#' @export
+#'
+#' @examples #final_data <- make_final_data(demo = demo, dues = dues)
 make_final_data <- function(demo, dues) {
 
   df <-
@@ -10,26 +20,26 @@ make_final_data <- function(demo, dues) {
   df <-
     df %>%
     select(
-      SID,
-      City,
-      State_US,
-      Country,
-      MemberGroup,
-      Membership_Dues,
-      MD_Number,
-      School,
-      School_Country,
-      Highest_Degree,
-      Priv_Publ,
-      AcademicApplied,
-      Field,
-      Profit_Non,
-      Gender,
-      Birthdate,
-      Ethnicity,
-      Age,
-      AgeGroup,
-      Primary_Career
+      .data$SID,
+      .data$City,
+      .data$State_US,
+      .data$Country,
+      .data$MemberGroup,
+      .data$Membership_Dues,
+      .data$MD_Number,
+      .data$School,
+      .data$School_Country,
+      .data$Highest_Degree,
+      .data$Priv_Publ,
+      .data$AcademicApplied,
+      .data$Field,
+      .data$Profit_Non,
+      .data$Gender,
+      .data$Birthdate,
+      .data$Ethnicity,
+      .data$Age,
+      .data$AgeGroup,
+      .data$Primary_Career
     ) %>%
     return()
 }

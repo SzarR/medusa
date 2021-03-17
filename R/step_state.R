@@ -1,12 +1,31 @@
+#' Cleans a member's state of residence, USA only.
+#'
+#' @param df a tibble of demographic data
+#'
+#' @return a tibble with cleaned column State_US
+#' @export
+#'
+#' @examples #demo_raw <- step_state(df = demo_raw)
 step_state <- function(df) {
+
+  state_abb <- as.factor(
+    c(
+      "AL","AK", "AZ", "AR", "CA", "CO", "CT", "DE", "FL", "GA", "HI", "ID", "IL",
+      "IN", "IA", "KS", "KY", "LA", "ME", "MD", "MA", "MI", "MN", "MS", "MO", "MT",
+      "NE", "NV", "NH", "NJ", "NM", "NY", "NC", "ND", "OH", "OK", "OR", "PA", "RI",
+      "SC", "SD", "TN", "TX", "UT", "VT", "VA", "WA", "WV", "WI", "WY",
+      "DC"
+      #, "GU", "VI"
+    )
+  )
 
   df <-
     df %>%
     mutate(
       STATE =
         case_when(
-          Country == 'Australia' & STATE == 'WA' ~ 'NA',
-          TRUE ~ STATE
+          .data$Country == 'Australia' & .data$STATE == 'WA' ~ 'NA',
+          TRUE ~ .data$STATE
         )
     )
 
@@ -31,11 +50,11 @@ step_state <- function(df) {
   df[df$SID == 172888,'STATE'] <- 'LA'
 
   df %>%
-    rename('State_US' = STATE) %>%
+    rename('State_US' = .data$STATE) %>%
     mutate(
       State_US =
         recode(
-          State_US,
+          .data$State_US,
           `Puerto Rico` = 'PR',
           Florida = 'FL',
           Illinois = 'IL'
@@ -43,7 +62,7 @@ step_state <- function(df) {
     ) %>%
     mutate(State_US =
              factor(
-               State_US,
+               .data$State_US,
                levels = state_abb)) %>%
     return()
 }

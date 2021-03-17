@@ -1,3 +1,13 @@
+#' A function wrapper that executes all functions related to cleaning the
+#' demographic xlsx dataset.
+#'
+#' @param df a tibble of demographic data
+#' @param ... detailed_types for ethnicity breakdown, default is FALSE
+#'
+#' @return a tibble with all demographic columns cleaned
+#' @export
+#'
+#' @examples #make_demo_data(df = demo_raw)
 make_demo_data <- function(df,...) {
 
   # Geography Cleaning Stage
@@ -13,10 +23,10 @@ make_demo_data <- function(df,...) {
   # Schools db merge
   df <-
     df %>%
-    mutate(School = `Highest Degree Institution`,
-           School_Country = `Institution Country`) %>%
+    mutate(School = .data$`Highest Degree Institution`,
+           School_Country = .data$`Institution Country`) %>%
     left_join(y = schools_db,
-              by = 'School')
+              by = .data$'School')
 
   # Education Cleaning Stage
   df <- step_highestdegree(df)
@@ -33,24 +43,24 @@ make_demo_data <- function(df,...) {
   df <-
     df %>%
     select(
-      SID,
-      City,
-      State_US,
-      Country,
-      AcademicApplied,
-      MemberGroup,
-      School,
-      School_Country,
-      Priv_Publ,
-      Primary_Career,
-      Profit_Non,
-      Field,
-      AgeGroup,
-      Age,
-      Gender,
-      Ethnicity,
-      Birthdate,
-      Highest_Degree
+      .data$SID,
+      .data$City,
+      .data$State_US,
+      .data$Country,
+      .data$AcademicApplied,
+      .data$MemberGroup,
+      .data$School,
+      .data$School_Country,
+      .data$Priv_Publ,
+      .data$Primary_Career,
+      .data$Profit_Non,
+      .data$Field,
+      .data$AgeGroup,
+      .data$Age,
+      .data$Gender,
+      .data$Ethnicity,
+      .data$Birthdate,
+      .data$Highest_Degree
     )
 
   return(df)

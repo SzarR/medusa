@@ -1,17 +1,25 @@
+#' Categorize whether a member works in an applied or academic setting.
+#'
+#' @param df a tibble of demographic data
+#'
+#' @return a tibble
+#' @export
+#'
+#' @examples #demo_raw <- step_academicapplied(df = demo_raw)
 step_academicapplied <- function(df) {
 
   df %>%
     mutate(
       AcademicApplied =
         case_when(
-          `Academic Sector (Primary)` != "" ~ 'Academic',
-          `Government Sector (Primary)` != "" ~ 'Applied',
-          `Private Sector (Primary)` != "" ~ 'Applied',
-          `Other Sector (Primary)` == "Other" ~ 'Applied'
+          .data$`Academic Sector (Primary)` != "" ~ 'Academic',
+          .data$`Government Sector (Primary)` != "" ~ 'Applied',
+          .data$`Private Sector (Primary)` != "" ~ 'Applied',
+          .data$`Other Sector (Primary)` == "Other" ~ 'Applied'
         )
     ) %>%
     mutate(
-      AcademicApplied = as.factor(AcademicApplied)
+      AcademicApplied = as.factor(.data$AcademicApplied)
     ) %>%
     return()
 

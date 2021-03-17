@@ -5,25 +5,27 @@
 #'
 #' @param ... Specify each tibble containing dues data
 #' @param year Specify the SIOP membership year
+#' @import magrittr
+#' @import dplyr
 #'
 #' @return tibble
 #' @export
 #'
-#' @examples
+#' @examples #make_dues(dues_0120, dues_0220, dues_0320, year = 2020)
 make_dues <- function(..., year) {
 
   df <-
     bind_rows(...) %>%
     select(
-      SID,
-      InvoiceDate,
-      ItemDescription,
-      Start,
-      Expiration,
-      Canceled,
-      CanceledDate,
-      Appeal,
-      ControlDate
+      .data$SID,
+      .data$InvoiceDate,
+      .data$ItemDescription,
+      .data$Start,
+      .data$Expiration,
+      .data$Canceled,
+      .data$CanceledDate,
+      .data$Appeal,
+      .data$ControlDate
     )
 
   df <- step_dues(df, year)

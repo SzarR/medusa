@@ -1,6 +1,15 @@
+#' Cleans a member's field of study
+#'
+#' @param df a tibble of demographic data
+#' @param detailed_types logical, whether to report country-based ethnicity or not
+#'
+#' @return a tibble with cleaned column Field
+#' @export
+#'
+#' @examples #demo_raw <- step_field(df = demo_raw)
 step_field <- function(df, detailed_types = TRUE) {
 
-  df$'Major Field Of Study' %>% replace_na("Not Specified")
+  #df$'Major Field Of Study' %>% replace_na("Not Specified")
 
   if(detailed_types == TRUE) {
 
@@ -8,7 +17,7 @@ step_field <- function(df, detailed_types = TRUE) {
       mutate(
         Field =
           recode_factor(
-            `Major Field Of Study`,
+            .data$`Major Field Of Study`,
             "Applied Behavior Analysis" = "Applied Psychology",
             "Applied Experimental /Human Factors Psychology" = "Applied Psychology",
             "Applied Experimental Psychology" = "Applied Psychology",
@@ -247,7 +256,7 @@ step_field <- function(df, detailed_types = TRUE) {
       mutate(
         Field =
           recode_factor(
-            'Major Field of Study',
+            .data$'Major Field of Study',
             "Applied Behavior Analysis" = "Applied Psychology",
             "Applied Experimental /Human Factors Psychology" = "Applied Psychology",
             "Applied Experimental Psychology" = "Applied Psychology",

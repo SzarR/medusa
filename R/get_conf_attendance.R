@@ -1,14 +1,24 @@
+#' Cleans a tibble according to who attended a SIOP conference
+#'
+#' @param df SIOP conference data frame
+#' @param merge_demo_from Typically the tibble obtained from make_final_data()
+#' @param year Which conferene year to analyze.
+#'
+#' @return a tibble of conference attendees
+#' @export
+#'
+#' @examples
 get_conf_attendance <- function(df, merge_demo_from, year) {
 
   df <-
     df %>%
-    select(SID,
-           Category,
-           Description,
-           Canceled) %>%
-    filter(Canceled == 0) %>%
+    select(.data$SID,
+           .data$Category,
+           .data$Description,
+           .data$Canceled) %>%
+    filter(.data$Canceled == 0) %>%
     mutate(
-      Year = as.integer(stringr::str_extract(Category, "\\d+")),
+      Year = as.integer(stringr::str_extract(.data$Category, "\\d+")),
       Conference = case_when(
         str_detect(string = Description,
                    pattern = paste(year, "Annual")) ~ "Annual",
@@ -23,27 +33,27 @@ get_conf_attendance <- function(df, merge_demo_from, year) {
         TRUE ~ "Other"
       )
     ) %>%
-    filter(Year == year & Conference == 'Annual') %>%
-    group_by(SID) %>%
-    slice_max(n = 1, with_ties = FALSE, order_by = SID)
+    filter(.data$Year == year & .data$Conference == 'Annual') %>%
+    group_by(.data$SID) %>%
+    slice_max(n = 1, with_ties = FALSE, order_by = .data$SID)
 
 
   merge_demo_from %>%
     right_join(df, by = "SID") %>%
     select(
-      SID,
-      Membership_Dues,
-      MD_Number,
-      City,
-      State_US,
-      Country,
-      Profit_Non,
-      Field,
-      AgeGroup,
-      Gender,
-      Ethnicity,
-      Birthdate,
-      Highest_Degree,
+      .data$SID,
+      .data$Membership_Dues,
+      .data$MD_Number,
+      .data$City,
+      .data$State_US,
+      .data$Country,
+      .data$Profit_Non,
+      .data$Field,
+      .data$AgeGroup,
+      .data$Gender,
+      .data$Ethnicity,
+      .data$Birthdate,
+      .data$Highest_Degree,
     ) %>%
     mutate(Conference = paste(year, "Annual Conference")) %>%
     return()

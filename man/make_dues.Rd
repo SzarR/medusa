@@ -18,3 +18,6 @@ tibble
 Takes and merges multiple tibbles into a single tibble in order to
 then run make_final_data().
 }
+\examples{
+#make_dues(dues_0120, dues_0220, dues_0320, year = 2020)
+}

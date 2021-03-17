@@ -1,3 +1,13 @@
+#' Clean and categorize a member's age. Bins have been pre-established according
+#' to best practices. Age is calculated from the date the function was ran.
+#' Results may therefore vary.
+#'
+#' @param df a tibble of demographic data
+#'
+#' @return Age, AgeGroup
+#' @export
+#'
+#' @examples #step_agegroup(df = demo_raw)
 step_agegroup <- function(df) {
 
   df$Birthdate <-

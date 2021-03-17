@@ -2,19 +2,22 @@
 % Please edit documentation in R/step_ethnicity.R
 \name{step_ethnicity}
 \alias{step_ethnicity}
-\title{Title}
+\title{Cleans a member's racial ethnicity.}
 \usage{
 step_ethnicity(df, detailed_types = FALSE)
 }
 \arguments{
-\item{df}{a raw demographic tibble}
+\item{df}{a tibble of demographic data}
 
 \item{detailed_types}{If ethnicity should be reported by country, or according
 to the new simplified schema such as Black, Hispanic, White, etc.}
 }
 \value{
-tibble
+a tibble with cleaned column Ethnicity
 }
 \description{
-Title
+Cleans a member's racial ethnicity.
+}
+\examples{
+#demo-raw <- step_ethnicity(df = demo_raw, detailed_types = FALSE)
 }

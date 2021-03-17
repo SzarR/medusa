@@ -1,17 +1,26 @@
 
-<!-- README.md is generated from README.Rmd. Please edit that file -->
-
 # medusa
 
 <!-- badges: start -->
 <!-- badges: end -->
 
-The goal of medusa is to …
+Medusa was developed for the express purpose of automating the workflow
+surrounding SIOP executive board membership analytic reports.
+Traditionally, the data involved in producing these reports was manually
+recoded, compiled and aggregated into a semi-annual report. The workflow
+present in the functions outlined within this package seek to automate
+the cleaning of the files required for analytics. The purpose of the
+package is to provide a single and clean data table that contains the
+appropriate member for a given SIOP year that the r user specifies. At a
+point in the future, the visualizations will be automated, too. This
+remains a future vision, at the present time.
 
 ## Installation
 
-You can install the developmental version of medusa from github with the
-following code chunk:
+Medusa is only available as a developmental version from my personal
+github repository. There are no plans to upload medusa to CRAN, simply
+because the package users are only a select few of people who sit on the
+committe as a volunteer.
 
 ``` r
 # install.packages("devtools")
@@ -20,33 +29,40 @@ devtools::install_github("SzarR/medusa")
 
 ## Example
 
-This is a basic example which shows you how to solve a common problem:
+There are two seperately ‘tiered’ functions within medusa. All functions
+with the prefix **step\_** are not meant to be executed directly by the
+user. Instead, three wrapper functions help automate the workflow
+entirely. A typical workflow would look something like this:
+
+First, we read in the xlsx datasets that house the data we are looking
+to clean.
 
 ``` r
 library(medusa)
-## basic example code
+
+#demo_raw <- read_xls(
+#  path = "~/R-lang/MAS_EB_Reporting/data/Demographics 7-6-20.xls")
+
+#dues_0620 <- read_xlsx(
+#  path = "~/R-lang/MAS_EB_Reporting/data/Dues June 2020.xlsx",
+#  sheet = "Sheet1")
+
+#dues_0520 <- read_xlsx(
+#  path = "~/R-lang/MAS_EB_Reporting/data/May 2020 Dues.xlsx",
+#  sheet = "Sheet1")
 ```
 
-What is special about using `README.Rmd` instead of just `README.md`?
-You can include R chunks like so:
+Once the raw data has been read into your local R environment, it is
+time to clean and parse the demographic data. The line below creates a
+demographic file that is ready to be merged with dues information:
 
 ``` r
-summary(cars)
-#>      speed           dist       
-#>  Min.   : 4.0   Min.   :  2.00  
-#>  1st Qu.:12.0   1st Qu.: 26.00  
-#>  Median :15.0   Median : 36.00  
-#>  Mean   :15.4   Mean   : 42.98  
-#>  3rd Qu.:19.0   3rd Qu.: 56.00  
-#>  Max.   :25.0   Max.   :120.00
+#demo <- make_demo_data(df = demo_raw)
 ```
 
-You’ll still need to render `README.Rmd` regularly, to keep `README.md`
-up-to-date.
+Next, we combine multiple dues files into a single file to then merge
+with the demographics data, this happens in the code below:
 
-You can also embed plots, for example:
-
-<img src="man/figures/README-pressure-1.png" width="100%" />
-
-In that case, don’t forget to commit and push the resulting figure
-files, so they display on GitHub!
+``` r
+#dues <- make_dues_data(df = demo_raw, year = 2020)
+```

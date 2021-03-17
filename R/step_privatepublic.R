@@ -1,20 +1,28 @@
+#' Cleans a member's school categorization
+#'
+#' @param df a tibble of demographic data
+#'
+#' @return a tibble with cleaned column Priv_Publ
+#' @export
+#'
+#' @examples #demo_raw <- step_privatepublic(df = demo_raw)
 step_privatepublic <- function(df) {
 
   df %>%
     mutate(
       Priv_Publ =
         case_when(
-          Control == "Private for-profit" ~ "Private (Not-For-Profit)",
-          Control == "Private not-for-profit" ~ 'Private (For-Profit)',
-          Control == "Public not-for-profit" ~ "Public",
-          Control == "public not-for-profit" ~ 'Public',
-          Control == 'International' ~ 'International',
-          (School_Country != 'United States' &
-             School_Country != 'NA') ~ 'International'
+          .data$Control == "Private for-profit" ~ "Private (Not-For-Profit)",
+          .data$Control == "Private not-for-profit" ~ 'Private (For-Profit)',
+          .data$Control == "Public not-for-profit" ~ "Public",
+          .data$Control == "public not-for-profit" ~ 'Public',
+          .data$Control == 'International' ~ 'International',
+          (.data$School_Country != 'United States' &
+             .data$School_Country != 'NA') ~ 'International'
         )
     ) %>%
     mutate(Priv_Publ =
-             factor(Priv_Publ)) %>%
+             factor(.data$Priv_Publ)) %>%
     return()
 
 }

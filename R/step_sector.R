@@ -1,3 +1,13 @@
+#' Cleans a member's primary employment sector.
+#'
+#' @param df a tibble of demographic data
+#'
+#' @return a tibble with cleaned column Primary_Career
+#' @export
+#'
+#' @importFrom tidyr unite
+#'
+#' @examples #demo_raw <- step_sector(df = demo_raw)
 step_sector <- function(df) {
 
   df <-
@@ -6,11 +16,11 @@ step_sector <- function(df) {
           contains("Primary"),
           remove = FALSE,
           na.rm = TRUE) %>%
-    mutate(Academy = ifelse(is.na(`Academic Sector (Primary)`), 0, 'Academy'),
-           Govern = ifelse(is.na(`Government Sector (Primary)`), 0, 'Govern'),
-           Private = ifelse(is.na(`Private Sector (Primary)`), 0, 'Private'),
-           Other = ifelse(is.na(`Other Sector (Primary)`), 0, 'Other'),
-           NotProv = ifelse(is.na(`Not Provided (Primary)`), 0, 'NotProv')
+    mutate(Academy = ifelse(is.na(.data$`Academic Sector (Primary)`), 0, 'Academy'),
+           Govern = ifelse(is.na(.data$`Government Sector (Primary)`), 0, 'Govern'),
+           Private = ifelse(is.na(.data$`Private Sector (Primary)`), 0, 'Private'),
+           Other = ifelse(is.na(.data$`Other Sector (Primary)`), 0, 'Other'),
+           NotProv = ifelse(is.na(.data$`Not Provided (Primary)`), 0, 'NotProv')
            #        ) %>%
            # unite(col = "Primary_Value",
            #       Academy:NotProv,

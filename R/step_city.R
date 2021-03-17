@@ -1,3 +1,12 @@
+#' Cleans and categorizes open-ended city name data and corrects errors.
+#'
+#' @param df a tibble of demographic data
+#'
+#' @return a tibble
+#' @import stringr
+#' @export
+#'
+#' @examples #demo_raw <- step_city(df = demo_raw)
 step_city <- function(df) {
 
   abbrev_table <-
@@ -20,7 +29,7 @@ step_city <- function(df) {
     mutate(
       City =
         recode(
-          City,
+           .data$City,
           '20037' =  'Washington',
           `East York` = 'York',
           `East Orange` = 'Orange',
@@ -118,7 +127,7 @@ step_city <- function(df) {
           `Chrstiansted` = 'Christiansted'
         )
     ) %>%
-    mutate(City = str_replace_all(City, abbrev_table)) %>%
-    mutate(City = toupper(City)) %>%
+    mutate(City = str_replace_all(.data$City, abbrev_table)) %>%
+    mutate(City = toupper(.data$City)) %>%
     return()
 }

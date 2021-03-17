@@ -1,13 +1,13 @@
-#' Title
+#' Cleans a member's racial ethnicity.
 #'
-#' @param df a raw demographic tibble
+#' @param df a tibble of demographic data
 #' @param detailed_types If ethnicity should be reported by country, or according
 #' to the new simplified schema such as Black, Hispanic, White, etc.
 #'
-#' @return tibble
+#' @return a tibble with cleaned column Ethnicity
 #' @export
 #'
-#' @examples
+#' @examples #demo-raw <- step_ethnicity(df = demo_raw, detailed_types = FALSE)
 step_ethnicity <- function(df, detailed_types=FALSE) {
 
   if(detailed_types == TRUE) {
@@ -16,7 +16,7 @@ step_ethnicity <- function(df, detailed_types=FALSE) {
       mutate(
         Ethnicity =
           recode_factor(
-            Ethnicity,
+            .data$Ethnicity,
             "Arabic" = "Arabic",
             "Black or African-American" = "Black or African American",
             "China" = "Chinese",
@@ -63,7 +63,7 @@ step_ethnicity <- function(df, detailed_types=FALSE) {
       mutate(
         Ethnicity =
           recode_factor(
-            Ethnicity,
+            .data$Ethnicity,
             "Arabic" = "White",
             "Black or African-American" = "Black or African American",
             "China" = "Asian",

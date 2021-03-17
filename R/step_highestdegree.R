@@ -1,13 +1,21 @@
+#' Cleans a member's highest earned degree.
+#'
+#' @param df a tibble of demographic data
+#'
+#' @return a tibble with cleaned column Highest_Degree
+#' @export
+#'
+#' @examples
 step_highestdegree <- function(df) {
 
-  df$Degree %>% replace_na("Not Specified")
+  #df$Degree %>% replace_na("Not Specified")
 
   df <-
     df %>%
     mutate(
       Highest_Degree =
         recode_factor(
-          Degree,
+          .data$Degree,
           "Associates" = "Associates",
           "2 yrs of grad program" = "Bachelors",
           "bachelor 2020, MS" = "Bachelors",

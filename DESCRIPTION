@@ -10,10 +10,12 @@ Authors@R:
            family = "Martin",
            role = "aut",
            email = "test@gmail.com"))
-Description: For further information on the processing of information
+Description: Insert something clever here.
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
-Imports: dplyr, magrittr, lubridate, stringr
+Imports: dplyr, magrittr, lubridate, stringr, tidyr
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1
+Depends: 
+    R (>= 2.10)
