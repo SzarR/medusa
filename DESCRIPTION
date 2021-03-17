@@ -9,8 +9,8 @@ Authors@R:
     person(given = "Jaclyn",
            family = "Martin",
            role = "aut",
-           email = "test@gmail.com"))
-Description: Insert something clever here.
+           email = "Jaclyn.martin28@gmail.com"))
+Description: This package contains three wrapper functions that serve as the main interface to automate SIOP membership analytics. 
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true

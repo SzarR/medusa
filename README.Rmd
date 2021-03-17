@@ -14,41 +14,51 @@ knitr::opts_chunk$set(
 # medusa
 
 <!-- badges: start -->
+[![Lifecycle: stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://www.tidyverse.org/lifecycle/#stable)
 <!-- badges: end -->
 
-Medusa was developed for the express purpose of automating the workflow 
-surrounding SIOP executive board membership analytic reports. Traditionally,
-the data involved in producing these reports was manually recoded, compiled
-and aggregated into a semi-annual report. The workflow present in the functions
-outlined within this package seek to automate the cleaning of the files required
-for analytics. The purpose of the package is to provide a single and clean
-data table that contains the appropriate member for a given SIOP year that 
-the r user specifies. At a point in the future, the visualizations will be
-automated, too. This remains a future vision, at the present time.
+Medusa was developed to automate the data cleaning workflow of membership
+analytic reports. Traditionally, the process of data cleaning was performed
+manually in Excel, leading to an inefficient and cumbersome process. The end
+result of this effort was a semi-annual membership report with visualizations
+for key demographic variables that describes the SIOP membership population. The
+purpose of the medusa package was to streamline the ingestion, data cleaning and
+visualization processes associated with this project. In the current iteration
+of medusa, the data cleaning and table generating steps have been automated.
 
 ## Installation
 
-Medusa is only available as a developmental version from my personal github
-repository. There are no plans to upload medusa to CRAN, simply because the
-package users are only a select few of people who sit on the committe as a
-volunteer.
+Medusa is currently available as a developmental package from this repository. 
+The instructions below will walk you through installing it on your local machine.
+As a side note, it relies heavily on the **tidyverse** package ecosystem to clean
+and tidy data. You will be prompted to install all required packages if they are
+not detected in your current R environment.
 
-``` r
+``` {r}
 # install.packages("devtools")
 devtools::install_github("SzarR/medusa")
 ```
+
 ## Example
 
-There are two seperately 'tiered' functions within medusa. All functions with
-the prefix **step_** are not meant to be executed directly by the user. Instead,
-three wrapper functions help automate the workflow entirely. A typical workflow
-would look something like this:
+There are two types of functions within *medusa*. The first, are the individual
+step functions. Each such step function cleans a specific part of the demographic
+dataset. An array of step functions are associated within the second type of
+function, the wrapper function. There are three wrapper functions:
 
-First, we read in the xlsx datasets that house the data we are looking to
-clean.
+* make_demo_data( ) = Runs a series of 14 functions to clean raw demographics data
+* make_dues( ) = Runs a series of 2 functions to clean raw dues data
+* make_final_data( ) = Takes the output of the above to create the final data table
 
-```{r example}
-library(medusa)
+These wrapper functions are the primary means of interacting with the R package. 
+A typical workflow would be:
+
+First, we read in the xlsx datasets that house the data we'd like to clean.
+
+```{r workflow_example}
+#library(medusa)
+#library(readxl)
+#library(tidyverse)
 
 #demo_raw <- read_xls(
 #  path = "~/R-lang/MAS_EB_Reporting/data/Demographics 7-6-20.xls")
@@ -62,27 +72,29 @@ library(medusa)
 #  sheet = "Sheet1")
 ```
 
-Once the raw data has been read into your local R environment, it is time
-to clean and parse the demographic data. The line below creates a demographic
-file that is ready to be merged with dues information:
+Once the raw data has been loaded into your local R environment, we begin to
+clean it. The line below takes the original demographic tibble and cleans all
+relevant columns, producing a cleaned tibble as its output:
 
 ```{r}
 #demo <- make_demo_data(df = demo_raw)
 ```
 
-Next, we combine multiple dues files into a single file to then merge with
-the demographics data, and also parses the columns and cleans them as well:
+The next wrapper function takes any number of tibbles as an argument, along
+with a *year* argument to specify which SIOP year analytics are being performed 
+on. Afterward, standard data cleaning is then performed, resulting in a cleaned
+dues tibble.
 
 ```{r}
 #dues <- make_dues(dues_0520, dues_0620, ..., year = 2020)
 ```
 
-Finally, once the demo and dues files have been staged accordingly, we can run
-the merge to obtain the resultant data table for the given SIOP year.
+Finally, once the demo and dues files have been cleaned accordingly, we can run
+the merge to obtain the resultant tibble of active SIOP members for the year
+specified.
 
 ```{r}
 #data_final <- make_final_data(demo = demo, dues = dues)
 ```
 
-This final dataset is the cleaned dataset with the resulting columns relevant 
-for further analyses. 
+This final dataset then serves as the baseline for all data analytics.
