@@ -36,7 +36,7 @@ not detected in your current R environment.
 
 ``` {r}
 # install.packages("devtools")
-devtools::install_github("SzarR/medusa")
+#devtools::install_github("SzarR/medusa")
 ```
 
 ## Example

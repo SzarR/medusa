@@ -29,10 +29,7 @@ your current R environment.
 
 ``` r
 # install.packages("devtools")
-devtools::install_github("SzarR/medusa")
-#> Error in get(genname, envir = envir) : object 'testthat_print' not found
-#> Skipping install of 'medusa' from a github remote, the SHA1 (211b664d) has not changed since last install.
-#>   Use `force = TRUE` to force installation
+#devtools::install_github("SzarR/medusa")
 ```
 
 ## Example
