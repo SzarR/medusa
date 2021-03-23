@@ -1,10 +1,12 @@
 
-# medusa
+# medusa <img src="man/figures/logo.png" align="right" width="120" />
 
 <!-- badges: start -->
 
 [![Lifecycle:
 stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://www.tidyverse.org/lifecycle/#stable)
+\[\[Version: 0.0.9\]\]
+
 <!-- badges: end -->
 
 Medusa was developed to automate the data cleaning workflow of
