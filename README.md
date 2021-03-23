@@ -5,7 +5,6 @@
 
 [![Lifecycle:
 stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://www.tidyverse.org/lifecycle/#stable)
-\[\[Version: 0.0.9\]\]
 
 <!-- badges: end -->
 
