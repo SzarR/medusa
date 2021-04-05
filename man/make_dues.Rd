@@ -2,12 +2,14 @@
 % Please edit documentation in R/make_dues.R
 \name{make_dues}
 \alias{make_dues}
-\title{Bind multiple rows from dues files}
+\title{Wrapper function for binding several raw tibbles of dues data that could
+exist by month, into a single tibble that is then inputted as the dues
+argument in make_final_data}
 \usage{
 make_dues(..., year)
 }
 \arguments{
-\item{...}{Specify each tibble containing dues data}
+\item{...}{Specify each raw tibble of dues data}
 
 \item{year}{Specify the SIOP membership year}
 }
@@ -15,8 +17,9 @@ make_dues(..., year)
 tibble
 }
 \description{
-Takes and merges multiple tibbles into a single tibble in order to
-then run make_final_data().
+Wrapper function for binding several raw tibbles of dues data that could
+exist by month, into a single tibble that is then inputted as the dues
+argument in make_final_data
 }
 \examples{
 #make_dues(dues_0120, dues_0220, dues_0320, year = 2020)

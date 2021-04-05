@@ -2,20 +2,20 @@
 % Please edit documentation in R/get_conf_attendance.R
 \name{get_conf_attendance}
 \alias{get_conf_attendance}
-\title{Cleans a tibble according to who attended a SIOP conference}
+\title{Cleans a tibble containing SIOP annual conference participants}
 \usage{
 get_conf_attendance(df, merge_demo_from, year)
 }
 \arguments{
-\item{df}{SIOP conference data frame}
+\item{df}{a tibble of Annual Conference participants}
 
-\item{merge_demo_from}{Typically the tibble obtained from make_final_data()}
+\item{merge_demo_from}{The resulting tibble from  make_final_data}
 
-\item{year}{Which conferene year to analyze.}
+\item{year}{Specify conference year as numeric vector}
 }
 \value{
 a tibble of conference attendees
 }
 \description{
-Cleans a tibble according to who attended a SIOP conference
+Cleans a tibble containing SIOP annual conference participants
 }

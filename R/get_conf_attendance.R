@@ -1,8 +1,8 @@
-#' Cleans a tibble according to who attended a SIOP conference
+#' Cleans a tibble containing SIOP annual conference participants
 #'
-#' @param df SIOP conference data frame
-#' @param merge_demo_from Typically the tibble obtained from make_final_data()
-#' @param year Which conferene year to analyze.
+#' @param df a tibble of Annual Conference participants
+#' @param merge_demo_from The resulting tibble from  make_final_data
+#' @param year Specify conference year as numeric vector
 #'
 #' @return a tibble of conference attendees
 #' @export

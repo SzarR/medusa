@@ -12,8 +12,6 @@ knitr::opts_chunk$set(
 ```
 
 # medusa <img src="man/figures/logo.png" align="right" width="120" />
-# medusa <img src="man/figures/mas_logo.png" align="left" width="120" />
-
   
 <!-- badges: start -->
 [![Lifecycle: stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://www.tidyverse.org/lifecycle/#stable)

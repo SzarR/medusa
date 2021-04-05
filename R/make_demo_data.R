@@ -1,10 +1,10 @@
-#' A function wrapper that executes all functions related to cleaning the
-#' demographic xlsx dataset.
+#' A function wrapper that serially executes all steps related to demographic
+#' cleaning of raw XLSX membership data.
 #'
-#' @param df a tibble of demographic data
-#' @param ... detailed_types for ethnicity breakdown, default is FALSE
+#' @param df a tibble of demographic data in raw format
+#' @param ...
 #'
-#' @return a tibble with all demographic columns cleaned
+#' @return a cleaned tibble with a subset of relevant features
 #' @export
 #'
 #' @examples #make_demo_data(df = demo_raw)
@@ -20,13 +20,13 @@ make_demo_data <- function(df,...) {
   df <- step_membergroup(df)
   df <- step_academicapplied(df)
 
-  # Schools db merge
+  # Schools database merge
   df <-
     df %>%
     mutate(School = .data$`Highest Degree Institution`,
            School_Country = .data$`Institution Country`) %>%
-    left_join(y = schools_db,
-              by = .data$'School')
+    left_join(y = schools_db %>% select(-City),
+              by = "School")
 
   # Education Cleaning Stage
   df <- step_highestdegree(df)

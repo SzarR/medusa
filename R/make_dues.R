@@ -1,9 +1,9 @@
-#' Bind multiple rows from dues files
+#' Wrapper function for binding several raw tibbles of dues data that could
+#' exist by month, into a single tibble that is then inputted as the dues
+#' argument in make_final_data
 #'
-#' Takes and merges multiple tibbles into a single tibble in order to
-#' then run make_final_data().
 #'
-#' @param ... Specify each tibble containing dues data
+#' @param ... Specify each raw tibble of dues data
 #' @param year Specify the SIOP membership year
 #' @import magrittr
 #' @import dplyr
