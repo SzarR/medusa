@@ -2,22 +2,22 @@
 % Please edit documentation in R/make_demo_data.R
 \name{make_demo_data}
 \alias{make_demo_data}
-\title{A function wrapper that executes all functions related to cleaning the
-demographic xlsx dataset.}
+\title{A function wrapper that serially executes all steps related to demographic
+cleaning of raw XLSX membership data.}
 \usage{
 make_demo_data(df, ...)
 }
 \arguments{
-\item{df}{a tibble of demographic data}
+\item{df}{a tibble of demographic data in raw format}
 
-\item{...}{detailed_types for ethnicity breakdown, default is FALSE}
+\item{...}{}
 }
 \value{
-a tibble with all demographic columns cleaned
+a cleaned tibble with a subset of relevant features
 }
 \description{
-A function wrapper that executes all functions related to cleaning the
-demographic xlsx dataset.
+A function wrapper that serially executes all steps related to demographic
+cleaning of raw XLSX membership data.
 }
 \examples{
 #make_demo_data(df = demo_raw)
