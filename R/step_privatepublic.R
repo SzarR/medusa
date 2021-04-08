@@ -12,8 +12,8 @@ step_privatepublic <- function(df) {
     mutate(
       Priv_Publ =
         case_when(
-          .data$Control == "Private for-profit" ~ "Private (Not-For-Profit)",
-          .data$Control == "Private not-for-profit" ~ 'Private (For-Profit)',
+          .data$Control == "Private for-profit" ~ "Private",
+          .data$Control == "Private not-for-profit" ~ 'Private',
           .data$Control == "Public not-for-profit" ~ "Public",
           .data$Control == "public not-for-profit" ~ 'Public',
           .data$Control == 'International' ~ 'International',
