@@ -9,15 +9,13 @@
 #' @examples #demo_raw <- step_field(df = demo_raw)
 step_field <- function(df, detailed_types = TRUE) {
 
-  #df$'Major Field Of Study' %>% replace_na("Not Specified")
-
   if(detailed_types == TRUE) {
 
     df %>%
       mutate(
         Field =
           recode_factor(
-            .data$`Major Field Of Study`,
+            .data$`Major Field of Study`,
             "Applied Behavior Analysis" = "Applied Psychology",
             "Applied Experimental /Human Factors Psychology" = "Applied Psychology",
             "Applied Experimental Psychology" = "Applied Psychology",
