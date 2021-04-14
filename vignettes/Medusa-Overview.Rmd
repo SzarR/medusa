@@ -1,0 +1,83 @@
+---
+title: "Medusa-Overview"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Medusa-Overview}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+This vignette dives into the details concerning the scope and requirements to 
+run the various functions within the medusa package. To a certain degree, this 
+vignette could be thought of as an update to the _SIOP Membership Analytics Data 
+Prep Guide_ that was previously used to keep track of the various data cleaning 
+strategies required to clean the yearly membership data. Most of the functions 
+developed were based from the logic and work of previous volunteers. Therefore, 
+we always invite others to collaborate and share information or methods that 
+would better help streamline the work we are continually doing on the data. To
+begin, some background context concerning the data itself is provided below:
+
+### Nice to Know
+
+* In 2000 through 2001, a SIOP fiscal year ran from 05/01 through 08/31. For 
+example, for the date range for being a member in the year 2000 would be from 
+05/01/1999 to 8/31/2000.
+* For the years 2002 - 2006, the date range would be 07/01 to 10/31. For example,
+for being considered a member in 2002, the date range would be 07/01/2001 to 10/31/2002.
+* For 2007 through the current year, the date range for SIOP membership is 03/01 to 06/30.
+For example, the date range of 03/01/2020 to 06/30/2021 would qualify somebody for 2021
+membership.
+* SID is a unique identifier created within the SIOP AO when data files are
+generated and pulled from SQL. 
+
+********************************************************************************
+### Variables of Interest
+
+The original dataset provided by the AO contains a lot of columns and data. Not
+all these features are equally important. We have therefore decided to focus 
+our initial efforts on streamlining and cleaning the critical demographic
+variables that are used either for modeling or reported in the annual membership
+report. This section of the vignette will outline the various variables, 
+their type, and levels. 
+
+#### `SID`
+
+A unique identifier, of type __double__, usually with a length of six. This
+variable is typically used to help identify duplicate cases, and track a member
+across the various SIOP membership years.
+
+#### `City`
+
+FFF
+
+## Second test.
+
+********************************************************************************
+
+* Bulleted list
+* Bullet 
+* Bullet
+
+1. Item 1
+2. Item 2
+3. Item 3
+
+`code code code`.
+
+```
+# A comment
+add <- function(a, b) a +b
+```
+
+```c
+int add(int a, int b) {
+  return a + b;
+}
+```
