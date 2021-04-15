@@ -1,5 +1,5 @@
 ---
-title: "Medusa-Overview"
+title: "Overview of Medusa Package"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{Medusa-Overview}
@@ -14,56 +14,118 @@ knitr::opts_chunk$set(
 )
 ```
 
-This vignette dives into the details concerning the scope and requirements to 
-run the various functions within the medusa package. To a certain degree, this 
-vignette could be thought of as an update to the _SIOP Membership Analytics Data 
-Prep Guide_ that was previously used to keep track of the various data cleaning 
-strategies required to clean the yearly membership data. Most of the functions 
-developed were based from the logic and work of previous volunteers. Therefore, 
-we always invite others to collaborate and share information or methods that 
-would better help streamline the work we are continually doing on the data. To
-begin, some background context concerning the data itself is provided below:
+This vignette dives into the details concerning the functions that comprise the
+medusa package. The readme file will demonstrate how to use the three main
+functions to clean your data. The purpose of this vignette is to provide further
+context concerning the standards we have set for each of the demographic
+variables. To a certain degree, this vignette could be thought of as an update 
+to the _SIOP Membership Analytics Data Prep Guide_ that was previously used to 
+keep track of the various data cleaning strategies required to clean the yearly 
+membership data. Most of the functions developed were based from the logic and 
+work of previous volunteers. Therefore, we always invite others to collaborate 
+and share information or methods that would better help streamline the work we 
+are continually doing on the data. To begin, some background context concerning 
+the data itself is provided below:
 
-### Nice to Know
+## Membership Year Ranges
 
-* In 2000 through 2001, a SIOP fiscal year ran from 05/01 through 08/31. For 
-example, for the date range for being a member in the year 2000 would be from 
-05/01/1999 to 8/31/2000.
-* For the years 2002 - 2006, the date range would be 07/01 to 10/31. For example,
-for being considered a member in 2002, the date range would be 07/01/2001 to 10/31/2002.
-* For 2007 through the current year, the date range for SIOP membership is 03/01 to 06/30.
-For example, the date range of 03/01/2020 to 06/30/2021 would qualify somebody for 2021
-membership.
-* SID is a unique identifier created within the SIOP AO when data files are
-generated and pulled from SQL. 
+* From 2000 - 2001, a SIOP year ran from 05/01 through 08/31. 
+* From 2002 - 2006, a SIOP year ran from 07/01 through 10/31.
+* From 2007 onward, a SIOP year runs from 03/01 to 06/30. (For 2021: 03/01/20 - 06/30/2021) 
+* SID is a unique identifer, created by the SIOP AO and serves as a unique key.
 
-********************************************************************************
-### Variables of Interest
+# Data Cleaning Steps
 
-The original dataset provided by the AO contains a lot of columns and data. Not
-all these features are equally important. We have therefore decided to focus 
-our initial efforts on streamlining and cleaning the critical demographic
-variables that are used either for modeling or reported in the annual membership
+## Global Variables
+
+The original dataset provided by the AO contains a lot of columns and variables. Not
+all these features are equally important for the time being. We have focused our initial efforts on 
+streamlining and cleaning the critical demographic
+variables that are used either for modeling or provided in the annual membership
 report. This section of the vignette will outline the various variables, 
 their type, and levels. 
 
-#### `SID`
+### `SID`
 
-A unique identifier, of type __double__, usually with a length of six. This
-variable is typically used to help identify duplicate cases, and track a member
-across the various SIOP membership years.
+A unique way of identifying members in an anonymous fashion. The length of the SID
+is typically six digits long. It serves as the primary method to run joins between
+various datasets for further analyses.
 
-#### `City`
+* __Type__: Double
 
-FFF
+## Geography Cleaning Stage
 
-## Second test.
+There are several clusters for cleaning data. One of which, geography, focuses
+on cleaning the information regarding a member's location information, mainly:
+* City
+* State
+* Country
+
+For state, an important stipulation is noted that this variable is only populated
+for members within the United States.
+
+### `City`
+
+The world city of a member's residence. Smaller towns or cities may be recoded
+into a larger, nearby city to help streamline analytics and aggregation. Also,
+acronyms for cities such as East, West, South, could be consolidated into the main
+city name. For example, East Orange would turn into Orange. Additionally, 
+abbreviations such as _Ft._ or _Mt._ are turned into their full names for
+consistency.
+
+* __Function step name__: step_city
+* __Input Variable Name:__ City
+* __Output Variable Name:__ City
+* __Format__: Open ended response
+* __Type__: Character
+
+### `State`
+
+The U.S. state of member's residence.For classifying State, the following were 
+not included as valid states:
+* Guam, with the acronym GU
+* Virgin Islands, with the acronym VI
+
+As an aside, in Australia, there is a state known by the acronym of WA. For
+cases that identify as their country of residence being Australia, all State
+responses were recoded to NA in order to avoid any confusion with
+Washington state in the USA.
+
+* __Function step name__: step_state
+* __Input Variable Name:__ STATE
+* __Output Variable Name:__ State_US
+* __Format__: Open ended response
+* __Type__: Character
+
+### `Country`
+
+The country of a member's residence. There is no cleaning that goes into this 
+function step because the country names are clean. The only significant change
+that happens to this demographic variable is the imputation of United States
+where State_US has a valid state abbreviation.
+
+* __Function step name__: step_country
+* __Input Variable Name:__ Country
+* __Output Variable Name:__ Country
+* __Format__: Open ended response ??????????
+* __Type__: Character
+
+## Membership Cleaning Stage
+
+#### `Primary_Career`
+
+* __Format__: Open ended response
+* __Type__: Character
+* __Levels__: 
+
+#### `MemberGroup`
+
+* __Format__: Open ended response
+* __Type__: Character
+* __Levels__: 
+
 
 ********************************************************************************
-
-* Bulleted list
-* Bullet 
-* Bullet
 
 1. Item 1
 2. Item 2
