@@ -38,9 +38,9 @@ the data itself is provided below:
 
 ## Global Variables
 
-The original dataset provided by the AO contains a lot of columns and variables. Not
-all these features are equally important for the time being. We have focused our initial efforts on 
-streamlining and cleaning the critical demographic
+The original dataset provided by the AO contains a lot of columns and variables. 
+Not all these features are equally important for the time being. We have focused 
+our initial efforts on streamlining and cleaning the critical demographic
 variables that are used either for modeling or provided in the annual membership
 report. This section of the vignette will outline the various variables, 
 their type, and levels. 
@@ -85,6 +85,7 @@ The U.S. state of member's residence.For classifying State, the following were
 not included as valid states:
 * Guam, with the acronym GU
 * Virgin Islands, with the acronym VI
+* Puerto Rico as PR - IS THIS TRUE??????? TODO
 
 As an aside, in Australia, there is a state known by the acronym of WA. For
 cases that identify as their country of residence being Australia, all State
@@ -112,7 +113,29 @@ where State_US has a valid state abbreviation.
 
 ## Membership Cleaning Stage
 
-#### `Primary_Career`
+Cleaning the membership columns deals primarily with three demographic 
+variables: career, membership category and whether the member is in an
+academic or applied setting. 
+
+#### `Primary_Occupation` & `Primary_Sector`
+
+The primary occupation/sector cleaning step outputs two unique columns of data
+from the raw demographics file. The first, primary occupation, reports out among
+a list list of careers, while the second Primary_Sector, reports out one of the
+four main categories.
+
+The primary sector column is an aggregation of five unique columns from the 
+demographics dataset. These include:
+* Academic Sector (Primary)
+* Government Sector (Primary)
+* Private Sector (Primary)
+* Other Sector (Primary)
+* Not Provided (Primary)
+
+These five columns are united into a single column called `Primary_Sector`.
+
+A new column is generated based on whether a member is classified in one of these
+five categorizations. This new column is named `Primary_Career`. 
 
 * __Format__: Open ended response
 * __Type__: Character
@@ -124,8 +147,6 @@ where State_US has a valid state abbreviation.
 * __Type__: Character
 * __Levels__: 
 
-
-********************************************************************************
 
 1. Item 1
 2. Item 2

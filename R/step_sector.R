@@ -2,7 +2,9 @@
 #'
 #' @param df a tibble of demographic data
 #'
-#' @return a tibble with cleaned column Primary_Career
+#' @return a tibble with two cleaned columns: "Primary_Occupation" which is
+#' a more thorough breakdown of a member's career, and "Primary_Sector", which
+#' is categorized into four main buckets: Academy, Government, Private, Other
 #' @export
 #'
 #' @importFrom tidyr unite
@@ -12,29 +14,17 @@ step_sector <- function(df) {
 
   df <-
     df %>%
-    unite(col = "Primary_Career",
+    unite(col = "Primary_Occupation",
           contains("Primary"),
           remove = FALSE,
           na.rm = TRUE) %>%
-    mutate(Academy = ifelse(is.na(.data$`Academic Sector (Primary)`), 0, 'Academy'),
-           Govern = ifelse(is.na(.data$`Government Sector (Primary)`), 0, 'Govern'),
-           Private = ifelse(is.na(.data$`Private Sector (Primary)`), 0, 'Private'),
-           Other = ifelse(is.na(.data$`Other Sector (Primary)`), 0, 'Other'),
-           NotProv = ifelse(is.na(.data$`Not Provided (Primary)`), 0, 'NotProv')
-           #        ) %>%
-           # unite(col = "Primary_Value",
-           #       Academy:NotProv,
-           #       remove=TRUE,
-           #       na.rm = FALSE) %>%
-           # mutate(Primary_Value = case_when(
-           #   Primary_Value == "0_0_0_0_0" ~ "NA",
-           #   Primary_Value == "0_0_0_Other_0" ~ "Other",
-           #   Primary_Value == "0_0_Private_0_0" ~ "Private",
-           #   Primary_Value == "0_Govern_0_0_0" ~ "Government",
-           #   Primary_Value == "Academy_0_0_0_0" ~ "Academy"
-    )
-  # ) %>%
-  # select(-Primary_Value) #Code/figure this out at a later date.
+    mutate(Primary_Sector = case_when(
+      !is.na(`Academic Sector (Primary)`) ~ 'Academy',
+      !is.na(`Government Sector (Primary)`) ~ 'Government',
+      !is.na(`Private Sector (Primary)`) ~ 'Private',
+      !is.na(`Other Sector (Primary)`) ~ 'Other',
+      !is.na(`Not Provided (Primary)`) ~ 'NotProvided',
+    ))
 
   return(df)
 }
