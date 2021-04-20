@@ -134,8 +134,7 @@ demographics dataset. These include:
 
 These five columns are united into a single column called `Primary_Sector`.
 
-A new column is generated based on whether a member is classified in one of these
-five categorizations. This new column is named `Primary_Career`. 
+The `Primary_Occupation` column  
 
 * __Format__: Open ended response
 * __Type__: Character
