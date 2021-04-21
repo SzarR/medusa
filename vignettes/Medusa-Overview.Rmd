@@ -117,34 +117,106 @@ Cleaning the membership columns deals primarily with three demographic
 variables: career, membership category and whether the member is in an
 academic or applied setting. 
 
-#### `Primary_Occupation` & `Primary_Sector`
+#### `Primary_Sector`  
 
-The primary occupation/sector cleaning step outputs two unique columns of data
-from the raw demographics file. The first, primary occupation, reports out among
-a list list of careers, while the second Primary_Sector, reports out one of the
-four main categories.
+The `Primary_Sector` variable describes the type of field the member is 
+operating in. The fields to be determined most relevant for analyses are
+included in the table below, under _Levels_.
 
-The primary sector column is an aggregation of five unique columns from the 
-demographics dataset. These include:
-* Academic Sector (Primary)
-* Government Sector (Primary)
-* Private Sector (Primary)
-* Other Sector (Primary)
-* Not Provided (Primary)
+TODO: Insert more background information on why this categorization exists.
+TODO: Make this a factor-level variable?
 
-These five columns are united into a single column called `Primary_Sector`.
-
-The `Primary_Occupation` column  
-
-* __Format__: Open ended response
+* __Function step name__: step_sector
+* __Input Variable Name:__ Academic Sector (Primary), Government Sector (Primary),
+Private Sector (Primary), Other Sector (Primary), Not Provided (Primary)
+* __Output Variable Name:__ Primary_Sector
+* __Format__: Open ended response ??????????
 * __Type__: Character
-* __Levels__: 
+* __Levels__: Academy, Government, Private, Other, Not Provided
+
+#### `Primary_Occupation`
+
+The `Primary_Occupation` variable is the second output from the `step_sector`
+cleaning function. It provides a much more nuanced approach to reporting the
+occupations of SIOP members. There exist at least thirty categorizations for
+this variable, ranging from Consulting firm to Financial services. This variable,
+in combination with `Primary_Sector` provides an interesting perspective on
+types of roles by the various sectors. 
+
+* __Function step name__: step_sector
+* __Input Variable Name:__ Academic Sector (Primary), Government Sector (Primary),
+Private Sector (Primary), Other Sector (Primary), Not Provided (Primary)
+* __Output Variable Name:__ Primary_Occupation
+* __Format__: Open ended response ??????????
+* __Type__: Character
+* __Levels__: Too many to explicitly document
 
 #### `MemberGroup`
 
+MemberGroup documents whether a member in the data table is an individual
+member within the society, or a prospect that has not yet fully signed up.
+
+TODO: Flesh this out more, why do we capture this and how does it work?
+
+* __Function step name__: step_membergroup
+* __Input Variable Name:__ MemberGroup
+* __Output Variable Name:__ MemberGroup
+* __Format__: Drop-down selection
+* __Type__: Factor
+* __Levels__: Individual, Prospect
+
+#### `AcademicApplied`
+
+The AcademicApplied variable captures whether an individual is within the 
+academic sector, or the applied sector. It is a dichotomous variable.
+
+TODO: We categorize Other Sector as Applied, is this okay?
+
+* __Function step name__: step_academicapplied
+* __Input Variable Name:__ Academic Sector (Primary), Government Sector (Primary),
+Private Sector (Primary), Other Sector (Primary)
+* __Output Variable Name:__ AcademicApplied
+* __Format__: Open ended response ??????????
+* __Type__: Factor
+* __Levels__: Academic, Applied
+
+## Education Cleaning Stage
+
+Education cleaning deals with demographic variables such as highest
+degree completed, institution attended, and the type of institution. Since
+the School variable is open ended, a custom database has been built that
+joins with the main analysis file to help streamline reporting of schools
+and their profit or non-profit status.
+
+#### `HighestDegree`
+
+Highest_Degree specifies the level of education that was the highest obtained
+for a specific SIOP member. This variable requires a lot of cleaning due to the
+messy nature of the data. Lots of members included various acronyms, and specialized
+degree titles for this field, making the standardization and reporting tedious.
+
+* __Function step name__: step_highestdegree
+* __Input Variable Name:__ Degree
+* __Output Variable Name:__ Highest_Degree
 * __Format__: Open ended response
-* __Type__: Character
-* __Levels__: 
+* __Type__: Factor
+* __Levels__: Associate, Bachelors, Doctorate, Other, ABD, Masters
+
+#### `Priv_Publ`
+
+Priv_Publ specifies the level of education that was the highest obtained
+for a specific SIOP member. This variable requires a lot of cleaning due to the
+messy nature of the data. Lots of members included various acronyms, and specialized
+degree titles for this field, making the standardization and reporting tedious.
+
+* __Function step name__: step_privatepublic
+* __Input Variable Name:__ Control
+* __Output Variable Name:__ Priv_Publ
+* __Format__: Open ended response ???
+* __Type__: Factor
+* __Levels__: International, Private, Public
+
+
 
 
 1. Item 1

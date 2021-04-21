@@ -39,7 +39,8 @@ make_final_data <- function(demo, dues) {
       .data$Ethnicity,
       .data$Age,
       .data$AgeGroup,
-      .data$Primary_Career
+      .data$Primary_Sector,
+      .data$Primary_Occupation
     ) %>%
     return()
 }
