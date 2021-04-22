@@ -216,22 +216,76 @@ degree titles for this field, making the standardization and reporting tedious.
 * __Type__: Factor
 * __Levels__: International, Private, Public
 
+#### `ProfitNon`
+
+The final school related demographic cleaning step concerns whether a school
+or institution is labelled as a for-profit or non-profit. The categorizations
+were developed as an independent study that culminated in the creation of a
+database of schools
+
+* __Function step name__: step_privatepublic
+* __Input Variable Name:__ Control
+* __Output Variable Name:__ Priv_Publ
+* __Format__: Open ended response ???
+* __Type__: Factor
+* __Levels__: International, Private, Public
+
+## Demographics Cleaning Stage
+
+Demographic cleaning deals with traditional variables, such as gender,
+ethnicity, birthdate, and age. The categorizations used are considered to
+be best practices.
+
+#### `Gender`
+
+Gender is reported as male or female.
+
+* __Function step name__: step_gender
+* __Input Variable Name:__ Gender
+* __Output Variable Name:__ Gender
+* __Format__: Close ended response
+* __Type__: Factor
+* __Levels__: Male, Female
+
+#### `Birthdate`
+
+Birthdate represents the date of birth of the member. It is coded
+as a proper date variable.
+
+TODO: Clean out birthdates that are obviously wrong, like > 100 years of age.
+
+* __Function step name__: step_birthdate
+* __Input Variable Name:__ Birth Date
+* __Output Variable Name:__ Birthdate
+* __Format__: Open ended response
+* __Type__: Date
+
+#### `Ethnicity`
+
+Ethnicity represents the race of the SIOP member. The standard seven
+categorizations are used for this.
+
+* __Function step name__: step_ethnicity
+* __Input Variable Name:__ Ethnicity
+* __Output Variable Name:__ Ethnicity
+* __Format__: Close ended response
+* __Type__: Factor
+* __Levels__: White, Black or African American, Asian, Two or more races,
+Hispanic or Latino, other, Native American/Alaska Native, Native Hawaiian or
+other Pacific Islander
 
 
+#### `Age Group`
 
-1. Item 1
-2. Item 2
-3. Item 3
+Age group is not directly queried from members. Instead, we use the Birthdate
+variable to calculate the current age of the member, by comparing the birthdate
+to a function that obtains today's date. 
 
-`code code code`.
+* __Function step name__: step_agegroup
+* __Input Variable Name:__ Birthdate
+* __Output Variable Name:__ AgeGroup
+* __Format__: Not a direct response from members
+* __Type__: Factor
+* __Levels__: 20 and under, 20-24, 25-29, 30-34, 35-39, 40-44, 45-49, 50-54,
+55-59, 60-64, 65-69, 70+
 
-```
-# A comment
-add <- function(a, b) a +b
-```
-
-```c
-int add(int a, int b) {
-  return a + b;
-}
-```
