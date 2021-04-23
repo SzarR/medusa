@@ -26,6 +26,7 @@ make_final_data <- function(demo, dues) {
       .data$Country,
       .data$MemberGroup,
       .data$Membership_Dues,
+      .data$Student_Prof, # wasn't included before
       .data$MD_Number,
       .data$School,
       .data$School_Country,
