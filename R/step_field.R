@@ -15,7 +15,7 @@ step_field <- function(df, detailed_types = TRUE) {
       mutate(
         Field =
           recode_factor(
-            .data$`Major Field of Study`,
+            .data$`Major Field Of Study`,
             "Applied Behavior Analysis" = "Applied Psychology",
             "Applied Experimental /Human Factors Psychology" = "Applied Psychology",
             "Applied Experimental Psychology" = "Applied Psychology",
@@ -254,7 +254,7 @@ step_field <- function(df, detailed_types = TRUE) {
       mutate(
         Field =
           recode_factor(
-            .data$'Major Field of Study',
+            .data$'Major Field Of Study',
             "Applied Behavior Analysis" = "Applied Psychology",
             "Applied Experimental /Human Factors Psychology" = "Applied Psychology",
             "Applied Experimental Psychology" = "Applied Psychology",
