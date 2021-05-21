@@ -4,10 +4,12 @@
 \alias{step_highestdegree}
 \title{Cleans a member's highest earned degree.}
 \usage{
-step_highestdegree(df)
+step_highestdegree(df, include_ABD = TRUE)
 }
 \arguments{
 \item{df}{a tibble of demographic data}
+
+\item{include_ABD}{logical specifying if to include ABD degree}
 }
 \value{
 a tibble with cleaned column Highest_Degree

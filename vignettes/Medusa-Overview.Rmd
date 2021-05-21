@@ -165,7 +165,7 @@ TODO: Flesh this out more, why do we capture this and how does it work?
 * __Type__: Factor
 * __Levels__: Individual, Prospect
 
-#### `AcademicApplied`
+#### `Academic_Applied`
 
 The AcademicApplied variable captures whether an individual is within the 
 academic sector, or the applied sector. It is a dichotomous variable.

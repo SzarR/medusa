@@ -47,21 +47,21 @@ make_demo_data <- function(df,...) {
       .data$City,
       .data$State_US,
       .data$Country,
-      .data$AcademicApplied,
-      .data$MemberGroup,
-      .data$School,
-      .data$School_Country,
-      .data$Priv_Publ,
       .data$Primary_Sector,
       .data$Primary_Occupation,
-      .data$Profit_Non,
+      .data$MemberGroup,
+      .data$Academic_Applied,
+      .data$School,
+      .data$School_Country,
+      .data$Highest_Degree,
+      .data$Priv_Publ,
       .data$Field,
-      .data$AgeGroup,
-      .data$Age,
+      .data$Profit_Non,
       .data$Gender,
-      .data$Ethnicity,
       .data$Birthdate,
-      .data$Highest_Degree
+      .data$Ethnicity,
+      .data$AgeGroup,
+      .data$Age
     )
 
   return(df)

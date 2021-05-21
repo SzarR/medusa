@@ -10,7 +10,7 @@ step_academicapplied <- function(df) {
 
   df %>%
     mutate(
-      AcademicApplied =
+      Academic_Applied =
         case_when(
           .data$`Academic Sector (Primary)` != "" ~ 'Academic',
           .data$`Government Sector (Primary)` != "" ~ 'Applied',
@@ -19,7 +19,7 @@ step_academicapplied <- function(df) {
         )
     ) %>%
     mutate(
-      AcademicApplied = as.factor(.data$AcademicApplied)
+      Academic_Applied = as.factor(.data$Academic_Applied)
     ) %>%
     return()
 

@@ -15,109 +15,44 @@ step_ethnicity <- function(df, detailed_types=FALSE) {
     df %>%
       mutate(
         Ethnicity =
-          recode_factor(
-            .data$Ethnicity,
-            "Arabic" = "Arabic",
-            "Black or African-American" = "Black or African American",
-            "China" = "Chinese",
-            "East Asian (Korean)" = "Korean",
-            "East Indian" = "Indian",
-            "Filipino / Caucasian" = "Multi-racial",
-            "Half Caucasian/Half Asian" = "Multi-racial",
-            "Hispanic/Latino(a)/or other Spanish origin " = "Hispanic/Latino(a)/or other Spanish origin",
-            "Hmong" = "Other",
-            "Hmong American" = "Other",
-            "Indian " = "Indian",
-            "Japanese American" = "Japanese",
-            "Korean American" =	"Korean",
-            "Malaysia" =	"Other",
-            "Malaysian" =	"Other",
-            "Middle Eastern" = "Middle Eastern",
-            "Multi-racial" = "Multi-racial",
-            "Other" = "Other",
-            "Pakistan" =	"Other",
-            "Pakistani" =	"Other",
-            "Philippines" =	"Filipino",
-            "Singapore Eurasian" =	"Other",
-            "South east Asian" = "Other",
-            "South Korea" =	"Korean",
-            "South Korean" =	"Korean",
-            "Taiwanese-American" =	"Other",
-            "Taiwanese" =	"Other",
-            "Thai and Chinese" =	"Other",
-            "Thai" =	"Other",
-            "Thai-Chinese" =	"Other",
-            "Vietnamese Chinese American" =	"Other",
-            "Vietnamese" =	"Vietnamese",
-            "Vietnamese-American" = 	"Vietnamese",
-            "White/Caucasian" = "White/Caucasian",
-            "0" = "NA",
-            "#N/A" = "NA",
-            "Not Reported" = "NA"
+          case_when(
+            str_detect(Ethnicity, "(?i)half") | str_detect(Ethnicity, "Multi-racial") | str_detect(Ethnicity, " / ") ~ "Multi-racial",
+            str_detect(Ethnicity, "Arabic") ~ "Arabic",
+            str_detect(Ethnicity, "Black") ~ "Black or African American",
+            str_detect(Ethnicity, "Chin[:alpha:]*") ~ "Chinese",
+            str_detect(Ethnicity, "Korea[:alpha:]*") ~ "Korean",
+            str_detect(Ethnicity, "Japan[:alpha:]*") ~ "Japanese",
+            str_detect(Ethnicity, "(?i)Indian") ~ "Indian",
+            str_detect(Ethnicity, "Middle Eastern") ~ "Middle Eastern",
+            str_detect(Ethnicity, "Vietnamese") ~ "Vietnamese",
+            str_detect(Ethnicity, "Hispanic") ~ "Hispanic or Latino",
+            str_detect(Ethnicity, "White/Caucasian") ~ "White/Caucasian",
+            str_detect(Ethnicity, "(?i)half") | str_detect(Ethnicity, "Multi-racial") | str_detect(Ethnicity, " / ") ~ "Multi-racial",
+            str_detect(Ethnicity, "0") | str_detect(Ethnicity, "#N/A") | str_detect(Ethnicity, "Not Reported") ~ NA_character_,
+            TRUE ~ "Other"
           )
       ) %>%
+          mutate(Ethnicity = as.factor(Ethnicity)) %>%
       return()
   } else if (detailed_types == FALSE) {
 
     df %>%
       mutate(
         Ethnicity =
-          recode_factor(
-            .data$Ethnicity,
-            "Arabic" = "White",
-            "Black or African-American" = "Black or African American",
-            "China" = "Asian",
-            "Chinese" = "Asian",
-            "Korean" = "Asian",
-            "Japanese" = "Asian",
-            "Republic of Korea" = "Asian",
-            "Nepali" = "Asian",
-            "Republic of Korea (South)" = "Asian",
-            "Indian " = "Asian",
-            "Pakistani Muslim" = "Asian",
-            "VIetnamese" = "Asian",
-            "Asian Pakistan" = "Asian",
-            "Cambodian" = "Black or African American",
-            "INDIAN" = "Asian",
-            "East Asian (Korean)" = "Asian",
-            "East Indian" = "Asian",
-            "Filipino / Caucasian" = "Two or more races",
-            "Half Caucasian/Half Asian" = "Two or more races",
-            "Hispanic/Latino(a)/or other Spanish origin" = "Hispanic or Latino",
-            "Asian Indian" = "Asian",
-            "Hmong" = "Asian",
-            "Hmong American" = "Asian",
-            "Indian" = "Asian",
-            "Japanese American" = "Asian",
-            "Korean American" =	"Asian",
-            "Malaysia" =	"Asian",
-            "Malaysian" =	"Asian",
-            "Middle Eastern" = "White",
-            "Multi-racial" = "Two or more races",
-            "Other" = "Other",
-            "Filipino" = "Asian",
-            "Pakistan" =	"Asian",
-            "Pakistani" =	"Asian",
-            "Philippines" =	"Asian",
-            "Singapore Eurasian" =	"Asian",
-            "South east Asian" = "Asian",
-            "South Korea" =	"Asian",
-            "South Korean" =	"Asian",
-            "Taiwanese-American" =	"Asian",
-            "Taiwanese" =	"Asian",
-            "Thai and Chinese" =	"Asian",
-            "Thai" =	"Asian",
-            "Thai-Chinese" =	"Asian",
-            "Vietnamese Chinese American" =	"Asian",
-            "Vietnamese" =	"Asian",
-            "Vietnamese-American" = 	"Asian",
-            "White/Caucasian" = "White",
-            "0" = 'Other',
-            "#N/A" = 'Other',
-            "Not Reported" = 'Other',
-            "Not reported" = 'Other'
+          case_when(
+            str_detect(Ethnicity, "(?i)half") | str_detect(Ethnicity, "Multi-racial") | str_detect(Ethnicity, " / ") ~ "Multi-racial",
+            str_detect(Ethnicity, "Arabic") | str_detect(Ethnicity, "Middle Eastern") | str_detect(Ethnicity, "White/Caucasian") ~ "White",
+            str_detect(Ethnicity, "Black") | str_detect(Ethnicity, "Cambodian") ~ "Black or African American",
+            str_detect(Ethnicity, "Chin[:alpha:]*") | str_detect(Ethnicity, "Korea[:alpha:]*") | str_detect(Ethnicity, "Japan[:alpha:]*") |
+              str_detect(Ethnicity, "(?i)india[:alpha:]*") | str_detect(Ethnicity, "(?i)pakist[:alpha:]*") | str_detect(Ethnicity, "(?i)vietn[:alpha:]*") |
+              str_detect(Ethnicity, "(?i)Hmong[:alpha:]*") | str_detect(Ethnicity, "(?i)Malay[:alpha:]*") | str_detect(Ethnicity, "(?i)Nepal[:alpha:]*") |
+              str_detect(Ethnicity, "(?i)Filipino[:alpha:]*") | str_detect(Ethnicity, "(?i)Philippi[:alpha:]*") | str_detect(Ethnicity, "(?i)Thai[:alpha:]*") |
+              str_detect(Ethnicity, "(?i)Taiwan[:alpha:]*") | str_detect(Ethnicity, "(?i)Asia[:alpha:]*") ~ "Asian",
+            str_detect(Ethnicity, "Hispanic") ~ "Hispanic or Latino",
+            TRUE ~ "Other"
           )
       ) %>%
+      mutate(Ethnicity = as.factor(Ethnicity)) %>%
       return()
   }
 }

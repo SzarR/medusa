@@ -24,24 +24,24 @@ make_final_data <- function(demo, dues) {
       .data$City,
       .data$State_US,
       .data$Country,
-      .data$MemberGroup,
       .data$Membership_Dues,
-      .data$Student_Prof, # wasn't included before
       .data$MD_Number,
+      .data$MemberGroup,
+      .data$Primary_Sector,
+      .data$Primary_Occupation,
+      .data$Academic_Applied,
+      .data$Student_Prof,
       .data$School,
       .data$School_Country,
       .data$Highest_Degree,
       .data$Priv_Publ,
-      .data$AcademicApplied,
       .data$Field,
       .data$Profit_Non,
       .data$Gender,
       .data$Birthdate,
       .data$Ethnicity,
       .data$Age,
-      .data$AgeGroup,
-      .data$Primary_Sector,
-      .data$Primary_Occupation
+      .data$AgeGroup
     ) %>%
     return()
 }

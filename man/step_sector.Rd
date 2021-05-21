@@ -10,7 +10,9 @@ step_sector(df)
 \item{df}{a tibble of demographic data}
 }
 \value{
-a tibble with cleaned column Primary_Career
+a tibble with two cleaned columns: "Primary_Occupation" which is
+a more thorough breakdown of a member's career, and "Primary_Sector", which
+is categorized into four main buckets: Academy, Government, Private, Other
 }
 \description{
 Cleans a member's primary employment sector.
