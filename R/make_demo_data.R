@@ -49,6 +49,7 @@ make_demo_data <- function(df,...) {
       .data$Country,
       .data$Primary_Sector,
       .data$Primary_Occupation,
+      .data$Job_Type,
       .data$MemberGroup,
       .data$Academic_Applied,
       .data$School,

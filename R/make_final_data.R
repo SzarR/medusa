@@ -29,6 +29,7 @@ make_final_data <- function(demo, dues) {
       .data$MemberGroup,
       .data$Primary_Sector,
       .data$Primary_Occupation,
+      .data$Job_Type,
       .data$Academic_Applied,
       .data$Student_Prof,
       .data$School,
