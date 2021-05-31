@@ -58,7 +58,8 @@ step_sector <- function(df) {
           "Two-year college" = "Academic - Other",
           "Univ. research center/institute" = "Academic - Other"
         )
-    )
+    ) %>%
+    mutate(Job_Type = na_if(Job_Type, ""))
 
   return(df)
 }
