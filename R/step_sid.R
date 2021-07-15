@@ -6,10 +6,15 @@
 #' @export
 #'
 #' @examples
-step_sid <- function(df) {
+step_sid <- function(df, staff) {
+
+  staff_SID <-
+    staff %>%
+    pull(SID)
 
   df <-
     df %>%
+    filter(!SID %in% staff_SID) %>%
     group_by(.data$SID) %>%
     arrange(.data$MD_Number) %>%
     arrange(desc(.data$InvoiceDate)) %>%

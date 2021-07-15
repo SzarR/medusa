@@ -7,15 +7,16 @@
 #' @return a tibble of SIOP members for the current year.
 #' @export
 #'
-#' @examples #final_data <- make_final_data(demo = demo, dues = dues)
-make_final_data <- function(demo, dues) {
+#' @examples #final_data <- make_final_data(demo = demo, dues = dues, staff = staff)
+make_final_data <- function(demo, dues, staff) {
 
   df <-
     left_join(x = dues,
               y = demo,
               by = "SID")
 
-  df <- step_sid(df)
+  df <- step_sid(df,
+                 staff = staff)
 
   df <-
     df %>%
