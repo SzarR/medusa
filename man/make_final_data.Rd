@@ -5,7 +5,7 @@
 \title{A function wrapper that takes the cleaned dues and demo data and merges it,
 and cleans by SID, and finalizes a cleaned dataset ready for further analysis.}
 \usage{
-make_final_data(demo, dues)
+make_final_data(demo, dues, staff)
 }
 \arguments{
 \item{demo}{a tibble of demo data. The output from make_demo_data()}
@@ -20,5 +20,5 @@ A function wrapper that takes the cleaned dues and demo data and merges it,
 and cleans by SID, and finalizes a cleaned dataset ready for further analysis.
 }
 \examples{
-#final_data <- make_final_data(demo = demo, dues = dues)
+#final_data <- make_final_data(demo = demo, dues = dues, staff = staff)
 }

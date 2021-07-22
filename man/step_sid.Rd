@@ -4,7 +4,7 @@
 \alias{step_sid}
 \title{Removes SID duplicates}
 \usage{
-step_sid(df)
+step_sid(df, staff)
 }
 \arguments{
 \item{df}{a tibble of dues data}
