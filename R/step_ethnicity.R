@@ -29,7 +29,7 @@ step_ethnicity <- function(df, detailed_types=FALSE) {
             str_detect(Ethnicity, "White/Caucasian") ~ "White/Caucasian",
             str_detect(Ethnicity, "(?i)half") | str_detect(Ethnicity, "Multi-racial") | str_detect(Ethnicity, " / ") ~ "Multi-racial",
             str_detect(Ethnicity, "0") | str_detect(Ethnicity, "#N/A") | str_detect(Ethnicity, "Not Reported") ~ NA_character_,
-            TRUE ~ "Other"
+            TRUE ~ NA_character_
           )
       ) %>%
           mutate(Ethnicity = as.factor(Ethnicity)) %>%
@@ -49,7 +49,7 @@ step_ethnicity <- function(df, detailed_types=FALSE) {
               str_detect(Ethnicity, "(?i)Filipino[:alpha:]*") | str_detect(Ethnicity, "(?i)Philippi[:alpha:]*") | str_detect(Ethnicity, "(?i)Thai[:alpha:]*") |
               str_detect(Ethnicity, "(?i)Taiwan[:alpha:]*") | str_detect(Ethnicity, "(?i)Asia[:alpha:]*") ~ "Asian",
             str_detect(Ethnicity, "Hispanic") ~ "Hispanic or Latino",
-            TRUE ~ "Other"
+            TRUE ~ NA_character_
           )
       ) %>%
       mutate(Ethnicity = as.factor(Ethnicity)) %>%

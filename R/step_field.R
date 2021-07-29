@@ -6,8 +6,8 @@
 #' @return a tibble with cleaned column Field
 #' @export
 #'
-#' @examples #demo_raw <- step_field(df = demo_raw)
-step_field <- function(df, detailed_types = TRUE) {
+#' @examples #demo_raw <- step_field(df = demo_raw, detailed_types = FALSE)
+step_field <- function(df, detailed_types = FALSE) {
 
   if(detailed_types == TRUE) {
 
