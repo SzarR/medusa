@@ -47,6 +47,7 @@ make_demo_data <- function(df,...) {
       .data$City,
       .data$State_US,
       .data$Country,
+      .data$ZipCode,
       .data$Primary_Sector,
       .data$Primary_Occupation,
       .data$Job_Type,
@@ -62,7 +63,9 @@ make_demo_data <- function(df,...) {
       .data$Birthdate,
       .data$Ethnicity,
       .data$AgeGroup,
-      .data$Age
+      .data$Age,
+      .data$`Graduated Month/Year*`,
+      .data$`Year Started in I-O Field`
     )
 
   return(df)

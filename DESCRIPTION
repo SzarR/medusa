@@ -14,7 +14,7 @@ Description: This package contains three wrapper functions that serve as the mai
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
-Imports: dplyr, magrittr, lubridate, stringr, tidyr
+Imports: dplyr, magrittr, lubridate, stringr, tidyr, forcats
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1
 Depends: 

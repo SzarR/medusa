@@ -25,6 +25,7 @@ make_final_data <- function(demo, dues, staff) {
       .data$City,
       .data$State_US,
       .data$Country,
+      .data$ZipCode,
       .data$Membership_Dues,
       .data$MD_Number,
       .data$MemberGroup,
@@ -43,7 +44,9 @@ make_final_data <- function(demo, dues, staff) {
       .data$Birthdate,
       .data$Ethnicity,
       .data$Age,
-      .data$AgeGroup
+      .data$AgeGroup,
+      .data$`Graduated Month/Year*`,
+      .data$`Year Started in I-O Field`
     ) %>%
     return()
 }

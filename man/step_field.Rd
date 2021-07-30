@@ -4,7 +4,7 @@
 \alias{step_field}
 \title{Cleans a member's field of study}
 \usage{
-step_field(df, detailed_types = TRUE)
+step_field(df, detailed_types = FALSE)
 }
 \arguments{
 \item{df}{a tibble of demographic data}
@@ -18,5 +18,5 @@ a tibble with cleaned column Field
 Cleans a member's field of study
 }
 \examples{
-#demo_raw <- step_field(df = demo_raw)
+#demo_raw <- step_field(df = demo_raw, detailed_types = FALSE)
 }

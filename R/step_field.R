@@ -487,6 +487,7 @@ step_field <- function(df, detailed_types = FALSE) {
             "IT Innovation" = "STEM"
           )
       ) %>%
+      mutate(Field = forcats::fct_lump_n(f = Field,n = 10)) %>%
       return()
   }
 }
