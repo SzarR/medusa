@@ -14,8 +14,8 @@ step_agegroup <- function(df) {
     as.Date(df$Birthdate,
             format= "%m/%d/%Y")
 
-  df$todaysdate <-
-    as.Date(format(Sys.Date(), "%m/%d/%Y"), "%m/%d/%Y")
+  df$todaysdate <- as.Date(c("2020-01-01"))
+  #df$todaysdate <- as.Date(format(Sys.Date(), "%m/%d/%Y"), "%m/%d/%Y")
 
   df$Age <-
     as.numeric(difftime(df$todaysdate, df$Birthdate, units = "weeks")) / 52.25
