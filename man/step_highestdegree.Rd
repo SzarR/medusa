@@ -4,7 +4,7 @@
 \alias{step_highestdegree}
 \title{Cleans a member's highest earned degree.}
 \usage{
-step_highestdegree(df, include_ABD = TRUE)
+step_highestdegree(df, include_ABD = FALSE)
 }
 \arguments{
 \item{df}{a tibble of demographic data}

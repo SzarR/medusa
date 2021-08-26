@@ -54,7 +54,7 @@ step_highestdegree <- function(df, include_ABD = FALSE) {
             str_detect(Degree, "MSW") | str_detect(Degree, "MEd") | str_detect(Degree, "Mundi") | str_detect(Degree, "(?i)master[:alpha:]*") |
             str_detect(Degree, "M.Litt") | str_detect(Degree, "M.S") | str_detect(Degree, "MC") | str_detect(Degree, "MP") |
             str_detect(Degree, "MP(?i)h") ~ "Masters",
-            str_detect(Degree, "(?i)bachelor[:alpha:]*") | str_detect(Degree, "BCom") ~ "Bachelorbs",
+            str_detect(Degree, "(?i)bachelor[:alpha:]*") | str_detect(Degree, "BCom") ~ "Bachelors",
             str_detect(Degree, "(?i)associates") ~ "Associates",
             str_detect(Degree, "(?i)diploma") | str_detect(Degree, "(?i)certificat[:alpha:]*") | str_detect(Degree, "Executive") |
             str_detect(Degree, "Prerequisites") | str_detect(Degree, "Other") | str_detect(Degree, "PgDip") ~ "Other",
