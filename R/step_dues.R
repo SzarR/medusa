@@ -35,7 +35,7 @@ step_dues <- function(df, year) {
           ItemDescription == "Retired Associate Dues" ~ 'Associate',
           ItemDescription == "Retired Associate Renewal Dues" ~ 'Retired Associate',
           ItemDescription == "Retired Associate Returning Dues" ~ 'Retired Associate',
-          ItemDescription == "Retired Dues" ~ 'Retired Member', #RIGHT?
+          ItemDescription == "Retired Dues" ~ 'Retired Member',
           ItemDescription == "Retired Fellow Dues" ~ 'Retired Fellow',
           ItemDescription == "Retired Fellow Renewal Dues" ~ 'Retired Fellow',
           ItemDescription == "Retired Fellow Returning Dues" ~ 'Retired Fellow',
@@ -110,7 +110,7 @@ step_dues <- function(df, year) {
            .data$InvoiceDate,
            .data$Canceled,
            .data$CanceledDate
-    )
+)
 
   return(df)
 
