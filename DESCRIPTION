@@ -1,6 +1,6 @@
 Package: medusa
 Title: Automating SIOP Membership Analytics
-Version: 1.4
+Version: 1.5
 Authors@R: 
     c(person(given = "Robert",
            family = "Szarek",
