@@ -7,7 +7,7 @@
 #' @return a tibble with cleaned column Ethnicity
 #' @export
 #'
-#' @examples #demo-raw <- step_ethnicity(df = demo_raw, detailed_types = FALSE)
+#' @examples #demo_raw <- step_ethnicity(df = demo_raw, detailed_types = FALSE)
 step_ethnicity <- function(df, detailed_types=FALSE) {
 
   if(detailed_types == TRUE) {
@@ -51,7 +51,6 @@ step_ethnicity <- function(df, detailed_types=FALSE) {
             str_detect(Ethnicity, "Hispanic") ~ "Hispanic or Latino",
             str_detect(Ethnicity, "Oth") ~ "Other",
             str_detect(Ethnicity, "0") | str_detect(Ethnicity, "#N/A") | str_detect(Ethnicity, "Not Reported") ~ NA_character_,
-            #str_detect(Ethnicity, "Reported") ~ "Other",
             TRUE ~ NA_character_
           )
      ) %>%

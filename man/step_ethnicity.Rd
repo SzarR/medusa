@@ -9,8 +9,8 @@ step_ethnicity(df, detailed_types = FALSE)
 \arguments{
 \item{df}{a tibble of demographic data}
 
-\item{detailed_types}{If ethnicity should be reported by country, or according
-to the new simplified schema such as Black, Hispanic, White, etc.}
+\item{detailed_types}{If ethnicity should be reported by country,
+or according to the new simplified schema such as Black, Hispanic, White, etc.}
 }
 \value{
 a tibble with cleaned column Ethnicity
@@ -19,5 +19,5 @@ a tibble with cleaned column Ethnicity
 Cleans a member's racial ethnicity.
 }
 \examples{
-#demo-raw <- step_ethnicity(df = demo_raw, detailed_types = FALSE)
+#demo_raw <- step_ethnicity(df = demo_raw, detailed_types = FALSE)
 }
