@@ -40,6 +40,9 @@ make_demo_data <- function(df,...) {
   df <- step_ethnicity(df, ...)
   df <- step_agegroup(df)
 
+  # Interests and Certifications Area
+  df <- step_interests(df)
+
   df <-
     df %>%
     select(
@@ -65,8 +68,10 @@ make_demo_data <- function(df,...) {
       .data$AgeGroup,
       .data$Age,
       .data$`Graduated Month/Year*`,
-      .data$`Year Started in I-O Field`
+      .data$`Year Started in I-O Field`,
+      .data$Interest_1,
+      .data$Interest_2,
+      .data$Interest_3
     )
-
   return(df)
 }
