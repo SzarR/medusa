@@ -46,7 +46,10 @@ make_final_data <- function(demo, dues, staff) {
       .data$Age,
       .data$AgeGroup,
       .data$`Graduated Month/Year*`,
-      .data$`Year Started in I-O Field`
+      .data$`Year Started in I-O Field`,
+      .data$Interest_1,
+      .data$Interest_2,
+      .data$Interest_3
     ) %>%
     return()
 }
