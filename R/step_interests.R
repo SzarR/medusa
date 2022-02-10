@@ -36,9 +36,3 @@ step_interests <- function(df) {
   #   filter(Interest != 'NA')
 
   }
-
-
-
-
-
-
