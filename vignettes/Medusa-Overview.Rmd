@@ -345,3 +345,36 @@ or, Student Affiliate, as a student, and all else as a professional.
 * __Type__: Double (integer)
 * __Levels__: Student, Professional
 
+#### `Interest Areas (Interest_1, Interest_2, Interest_3)`
+
+This variable consists of a series of three columns in the original demographics
+dataset. Minimal cleaning was performed, such as removing multiple categories
+in the first, second, or third interest area. Several members put more than one
+category in a single variable, for example, for Intest_1, somebody may have
+put Psychometrics and Organizational Culture. In this instance, organizational
+culture would have been dropped and Psychometrics retained for Interest_1.
+
+* __Function step name__: step_interests
+* __Input Variable Name:__ Interest Area (first choice), Interest Area (second choice), Interest Area (third choice)`,
+* __Output Variable Name:__ Interest_1, Interest_2, Interest_3
+* __Format__: Close ended response
+* __Type__: Factor
+* __Levels__: Coaching/Leadership Development, Testing/Assessment, Leadership,
+Inclusion/Diversity, Careers/Career Planning/Mentoring/Socialization/Onboarding/Retirement,
+Staffing, Groups/Teams, Job Analysis/Job Design/Competency Modeling, Job Attitudes/Engagement,
+Occupational Health/Safety/Stress & Strain/Aging, Organizational Performance/Change Management/Downsizing/OD,
+Measurement/Statistical Techniques, Organizational Culture/Climate, Performance Appraisal/Feedback/Management/Goal-Setting,
+I-O Psychology Education/Professional Development, Conflict/Counterproductive Behavior/Harassment/Violence/Workplace Deviance,
+Personality, Global/International/Cross-Cultural Issues, Training, Research Methodology,
+Work and Family/Non-Work Life/Leisure/Flexible Work Arrangements, Motivation/Rewards/Compensation,
+Consulting Practices/Ethical Issues, Emotions/Emotional Labor, Employee Withdrawal/Retention,
+Strategic HR/Utility/Changing Role of HR, Job Performance/Citizenship Behavior, Technology,
+Legal Issues/Employment Law/Union Issues/Labor Relations, Innovation/Creativity,
+Judgment/Decision Making, Other, Customer Service/Consumer Psychology,
+Human Factors/Ergonomics, Organizational Justice, Teaching I-O Psychology/Student Affiliate Issues/Professional Development in I-O Psychology,
+Pro-Social
+
+
+
+
+

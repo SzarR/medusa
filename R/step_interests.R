@@ -21,6 +21,9 @@ step_interests <- function(df) {
     ) %>%
     mutate(across(starts_with('Interest'), ~ str_replace(., " \\s*\\([^\\)]+\\)", ""))) %>% # Drop ()
     mutate(across(starts_with('Interest'), ~ gsub("(.*),.*", "\\1", .))) %>% # Drop > 1 Interest
+    mutate(Interest_1 = as.factor(Interest_1),
+           Interest_2 = as.factor(Interest_2),
+           Interest_3 = as.factor(Interest_3)) %>%
     return()
 
   # The rest of this code was developed for a pivot_longer configuration
