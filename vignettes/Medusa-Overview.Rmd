@@ -355,7 +355,7 @@ put Psychometrics and Organizational Culture. In this instance, organizational
 culture would have been dropped and Psychometrics retained for Interest_1.
 
 * __Function step name__: step_interests
-* __Input Variable Name:__ Interest Area (first choice), Interest Area (second choice), Interest Area (third choice)`,
+* __Input Variable Name:__ Interest Area (first choice), Interest Area (second choice), Interest Area (third choice),
 * __Output Variable Name:__ Interest_1, Interest_2, Interest_3
 * __Format__: Close ended response
 * __Type__: Factor
