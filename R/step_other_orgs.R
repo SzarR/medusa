@@ -20,7 +20,8 @@ step_other_orgs <- function(df) {
 
   orgs_count_names <- str_c("org_", 1:orgs_count_max)
 
-  orgs_list <- df_out %>%
+  orgs_list <-
+    df_out %>%
     separate(other_orgs, into = orgs_count_names) %>%
     pivot_longer(starts_with("org_")) %>%
     pull(value) %>%
