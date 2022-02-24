@@ -79,7 +79,9 @@ make_demo_data <- function(df,...) {
       .data$org_aff_SHRM,
       .data$org_aff_EAWOP,
       .data$org_aff_IAAP,
-      .data$org_aff_CPA
+      .data$org_aff_CPA,
+      .data$cert_HRCI,
+      .data$cert_SHRM
     )
   return(df)
 }

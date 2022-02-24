@@ -11,7 +11,9 @@
 step_other_orgs <- function(df) {
 
   df_out <- df %>%
-    rename(other_orgs = `Other Organizational Affiliations`)
+    rename(other_orgs = `Other Organizational Affiliations`,
+           cert_HRCI = `HRCI Certification: Do you hold PHR, SPHR, or GPHR certification?`,
+           cert_SHRM = `SHRM Certification: Do you hold SHRM-CP or SHRM-SCP certification?`)
 
   orgs_count_max <- str_count(df_out$other_orgs, ",") %>%
     max(na.rm = TRUE)
@@ -32,5 +34,11 @@ step_other_orgs <- function(df) {
       mutate(!!orgs_names[i] :=
                case_when(str_detect(other_orgs, orgs_list[i]) ~ 1, TRUE ~ 0)) # note that 0 = FALSE and 1 = TRUE
   }
+
+  df_out <-
+    df_out %>%
+    mutate(cert_HRCI = ifelse(cert_HRCI == "Yes", 1, 0),
+           cert_SHRM = ifelse(cert_SHRM == "Yes", 1, 0))
+
   return(df_out)
 }

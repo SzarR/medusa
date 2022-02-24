@@ -3,8 +3,6 @@
 #'
 #' @param ...
 #' @param df Specify the raw xlsx demographics file
-#' @import magrittr
-#' @import dplyr
 #'
 #' @return tibble
 #' @export

@@ -56,7 +56,9 @@ make_final_data <- function(demo, dues, staff) {
       .data$org_aff_SHRM,
       .data$org_aff_EAWOP,
       .data$org_aff_IAAP,
-      .data$org_aff_CPA
+      .data$org_aff_CPA,
+      .data$cert_HRCI,
+      .data$cert_SHRM
     ) %>%
     return()
 }
