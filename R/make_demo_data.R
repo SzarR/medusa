@@ -42,6 +42,7 @@ make_demo_data <- function(df,...) {
 
   # Interests and Certifications Area
   df <- step_interests(df)
+  df <- step_other_orgs(df)
 
   df <-
     df %>%
@@ -71,7 +72,14 @@ make_demo_data <- function(df,...) {
       .data$`Year Started in I-O Field`,
       .data$Interest_1,
       .data$Interest_2,
-      .data$Interest_3
+      .data$Interest_3,
+      .data$org_aff_AOM,
+      .data$org_aff_APA,
+      .data$org_aff_APS,
+      .data$org_aff_SHRM,
+      .data$org_aff_EAWOP,
+      .data$org_aff_IAAP,
+      .data$org_aff_CPA
     )
   return(df)
 }

@@ -49,7 +49,14 @@ make_final_data <- function(demo, dues, staff) {
       .data$`Year Started in I-O Field`,
       .data$Interest_1,
       .data$Interest_2,
-      .data$Interest_3
+      .data$Interest_3,
+      .data$org_aff_AOM,
+      .data$org_aff_APA,
+      .data$org_aff_APS,
+      .data$org_aff_SHRM,
+      .data$org_aff_EAWOP,
+      .data$org_aff_IAAP,
+      .data$org_aff_CPA
     ) %>%
     return()
 }
