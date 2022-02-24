@@ -1,8 +1,6 @@
 #' Function that cleans the Other Organizational Affiliations field of the original
 #' demographics dataset.
 #'
-#' @import dplyr, stringr, tidyr
-#'
 #' @param df a tibble of demographic data
 #'
 #' @return tibble
