@@ -47,9 +47,9 @@ make_final_data <- function(demo, dues, staff) {
       .data$AgeGroup,
       .data$`Graduated Month/Year*`,
       .data$`Year Started in I-O Field`,
-      .data$Interest_1,
-      .data$Interest_2,
-      .data$Interest_3,
+      .data$int_1,
+      .data$int_2,
+      .data$int_3,
       .data$org_aff_AOM,
       .data$org_aff_APA,
       .data$org_aff_APS,
@@ -57,8 +57,19 @@ make_final_data <- function(demo, dues, staff) {
       .data$org_aff_EAWOP,
       .data$org_aff_IAAP,
       .data$org_aff_CPA,
-      .data$cert_HRCI,
-      .data$cert_SHRM
+      .data$org_aff_HRCI,
+      .data$org_aff_SHRM,
+      .data$inv_share_knowledge,
+      .data$inv_collaborate_on_projects,
+      .data$inv_conduct_research,
+      .data$inv_join_interdisciplinary_teams,
+      .data$inv_other,
+      .data$inv_present_at_meetings_conferences,
+      .data$inv_join_communities_of_interest,
+      .data$inv_network,
+      .data$inv_consult_to_business
+
+
     ) %>%
     return()
 }

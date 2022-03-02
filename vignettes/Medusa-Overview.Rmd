@@ -356,9 +356,9 @@ culture would have been dropped and Psychometrics retained for Interest_1.
 
 * __Function step name__: step_interests
 * __Input Variable Name:__ Interest Area (first choice), Interest Area (second choice), Interest Area (third choice),
-* __Output Variable Name:__ Interest_1, Interest_2, Interest_3
+* __Output Variable Name:__ int_1, int_2, int_3
 * __Format__: Close ended response
-* __Type__: Factor
+* __Type__: character
 * __Levels__: Coaching/Leadership Development, Testing/Assessment, Leadership,
 Inclusion/Diversity, Careers/Career Planning/Mentoring/Socialization/Onboarding/Retirement,
 Staffing, Groups/Teams, Job Analysis/Job Design/Competency Modeling, Job Attitudes/Engagement,

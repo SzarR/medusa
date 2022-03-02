@@ -13,15 +13,12 @@ step_interests <- function(df) {
 
   df %>%
     rename(
-      'Interest_1' = `Interest Area (first choice)`,
-      'Interest_2' = `Interest Area (second choice)`,
-      'Interest_3' = `Interest Area (third choice)`,
+      'int_1' = `Interest Area (first choice)`,
+      'int_2' = `Interest Area (second choice)`,
+      'int_3' = `Interest Area (third choice)`,
     ) %>%
-    mutate(across(starts_with('Interest'), ~ str_replace(., " \\s*\\([^\\)]+\\)", ""))) %>% # Drop ()
-    mutate(across(starts_with('Interest'), ~ gsub("(.*),.*", "\\1", .))) %>% # Drop > 1 Interest
-    mutate(Interest_1 = as.factor(Interest_1),
-           Interest_2 = as.factor(Interest_2),
-           Interest_3 = as.factor(Interest_3)) %>%
+    mutate(across(starts_with('int_'), ~ str_replace(., " \\s*\\([^\\)]+\\)", ""))) %>% # Drop ()
+    mutate(across(starts_with('int_'), ~ gsub("(.*),.*", "\\1", .))) %>% # Drop > 1 Interest
     return()
 
   # The rest of this code was developed for a pivot_longer configuration
