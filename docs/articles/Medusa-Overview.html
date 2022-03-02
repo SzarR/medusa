@@ -479,10 +479,10 @@
 </ul>
 </div>
 <div class="section level5">
-<h5 id="interest-areas-interest_1-interest_2-interest_3">
-<code>Interest Areas (Interest_1, Interest_2, Interest_3)</code><a class="anchor" aria-label="anchor" href="#interest-areas-interest_1-interest_2-interest_3"></a>
+<h5 id="interest-areas">
+<code>Interest Areas</code><a class="anchor" aria-label="anchor" href="#interest-areas"></a>
 </h5>
-<p>This variable consists of a series of three columns in the original demographics dataset. Minimal cleaning was performed, such as removing multiple categories in the first, second, or third interest area. Several members put more than one category in a single variable, for example, for Intest_1, somebody may have put Psychometrics and Organizational Culture. In this instance, organizational culture would have been dropped and Psychometrics retained for Interest_1.</p>
+<p>This variable consists of a series of three columns in the original demographics dataset. Minimal cleaning was performed, such as removing multiple categories in the first, second, or third interest area. Several members put more than one category in a single variable, for example, for int_1, somebody may have put Psychometrics and Organizational Culture. In this instance, organizational culture would have been dropped and Psychometrics retained for int_1. This is to help streamline the analytics and set expectations on the data file year after year.</p>
 <ul>
 <li>
 <strong>Function step name</strong>: step_interests</li>
@@ -497,7 +497,46 @@
 <li>
 <strong>Levels</strong>: Coaching/Leadership Development, Testing/Assessment, Leadership, Inclusion/Diversity, Careers/Career Planning/Mentoring/Socialization/Onboarding/Retirement, Staffing, Groups/Teams, Job Analysis/Job Design/Competency Modeling, Job Attitudes/Engagement, Occupational Health/Safety/Stress &amp; Strain/Aging, Organizational Performance/Change Management/Downsizing/OD, Measurement/Statistical Techniques, Organizational Culture/Climate, Performance Appraisal/Feedback/Management/Goal-Setting, I-O Psychology Education/Professional Development, Conflict/Counterproductive Behavior/Harassment/Violence/Workplace Deviance, Personality, Global/International/Cross-Cultural Issues, Training, Research Methodology, Work and Family/Non-Work Life/Leisure/Flexible Work Arrangements, Motivation/Rewards/Compensation, Consulting Practices/Ethical Issues, Emotions/Emotional Labor, Employee Withdrawal/Retention, Strategic HR/Utility/Changing Role of HR, Job Performance/Citizenship Behavior, Technology, Legal Issues/Employment Law/Union Issues/Labor Relations, Innovation/Creativity, Judgment/Decision Making, Other, Customer Service/Consumer Psychology, Human Factors/Ergonomics, Organizational Justice, Teaching I-O Psychology/Student Affiliate Issues/Professional Development in I-O Psychology, Pro-Social</li>
 </ul>
-<p>Test if this will work.</p>
+</div>
+<div class="section level5">
+<h5 id="involvement-seeking">
+<code>Involvement Seeking</code><a class="anchor" aria-label="anchor" href="#involvement-seeking"></a>
+</h5>
+<p>A variable asks members if they are seeking any involvement in a wide range of activities that are aligned with SIOP initiatives. Each unique category is created into a column with a 0 and 1 for whether a member possesses the inclination toward that activity.</p>
+<ul>
+<li>
+<strong>Function step name</strong>: step_involvement</li>
+<li>
+<strong>Input Variable Name:</strong> Involvement Sought</li>
+<li>
+<strong>Output Variable Name:</strong> inv_share_knowledge, inv_collaborate_on_projects, inv_conduct_research, inv_join_interdisclipinary_teams, inv_other, inv_present_at_meetings_conferences, inv_join_communities_of_interest, inv_network, inv_consult_to_business</li>
+<li>
+<strong>Format</strong>: Numeric</li>
+<li>
+<strong>Type</strong>: Double (integer)</li>
+<li>
+<strong>Levels</strong>: 0, 1</li>
+</ul>
+</div>
+<div class="section level5">
+<h5 id="organizational-affilitations">
+<code>Organizational Affilitations</code><a class="anchor" aria-label="anchor" href="#organizational-affilitations"></a>
+</h5>
+<p>A variable asks members if they are associated with any other organizational or professional affilitiations. Each level is transformed into a unique column.</p>
+<ul>
+<li>
+<strong>Function step name</strong>: step_other_orgs</li>
+<li>
+<strong>Input Variable Name:</strong> Other Organizational Affiliations, HRCI Certification: Do you hold PHR, SPHR, or GPHR certification?, SHRM Certification: Do you hold SHRM-CP or SHRM-SCP certification?</li>
+<li>
+<strong>Output Variable Name:</strong> org_aff_AOM, org_aff_APA, org_aff_APS, org_aff_SHRM, org_aff_EAWOP, org_aff_IAAP, org_aff_CPA, org_aff_HRCI, org_aff_SHRM,</li>
+<li>
+<strong>Format</strong>: Numeric</li>
+<li>
+<strong>Type</strong>: Double (integer)</li>
+<li>
+<strong>Levels</strong>: 0, 1</li>
+</ul>
 </div>
 </div>
 </div>

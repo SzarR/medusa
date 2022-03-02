@@ -33,6 +33,16 @@ your current R environment.
 #devtools::install_github("SzarR/medusa")
 ```
 
+## Current Counts
+
+Current counts after data cleaning for each of the years equate to:
+
+-   2017: 9,905
+-   2018: 10,079
+-   2019: 9,842
+-   2020: 9,660
+-   2021: 9,100
+
 ## Example
 
 There are two types of functions within *medusa*. The first, are the
@@ -97,5 +107,3 @@ for the year specified.
 ```
 
 This final dataset then serves as the baseline for all data analytics.
-
-Test.

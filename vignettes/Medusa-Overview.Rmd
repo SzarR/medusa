@@ -345,14 +345,16 @@ or, Student Affiliate, as a student, and all else as a professional.
 * __Type__: Double (integer)
 * __Levels__: Student, Professional
 
-#### `Interest Areas (Interest_1, Interest_2, Interest_3)`
+#### `Interest Areas`
 
 This variable consists of a series of three columns in the original demographics
 dataset. Minimal cleaning was performed, such as removing multiple categories
 in the first, second, or third interest area. Several members put more than one
-category in a single variable, for example, for Intest_1, somebody may have
+category in a single variable, for example, for int_1, somebody may have
 put Psychometrics and Organizational Culture. In this instance, organizational
-culture would have been dropped and Psychometrics retained for Interest_1.
+culture would have been dropped and Psychometrics retained for int_1. This is
+to help streamline the analytics and set expectations on the data file year
+after year.
 
 * __Function step name__: step_interests
 * __Input Variable Name:__ Interest Area (first choice), Interest Area (second choice), Interest Area (third choice),
@@ -373,7 +375,36 @@ Legal Issues/Employment Law/Union Issues/Labor Relations, Innovation/Creativity,
 Judgment/Decision Making, Other, Customer Service/Consumer Psychology,
 Human Factors/Ergonomics, Organizational Justice, Teaching I-O Psychology/Student Affiliate Issues/Professional Development in I-O Psychology, Pro-Social
 
-Test if this will work.
+#### `Involvement Seeking`
 
+A variable asks members if they are seeking any involvement in a wide range
+of activities that are aligned with SIOP initiatives. Each unique category
+is created into a column with a 0 and 1 for whether a member possesses the
+inclination toward that activity.
 
+* __Function step name__: step_involvement
+* __Input Variable Name:__ Involvement Sought
+* __Output Variable Name:__ inv_share_knowledge, inv_collaborate_on_projects,
+inv_conduct_research, inv_join_interdisclipinary_teams, inv_other,
+inv_present_at_meetings_conferences, inv_join_communities_of_interest, inv_network,
+inv_consult_to_business
+* __Format__: Numeric
+* __Type__: Double (integer)
+* __Levels__: 0, 1
+
+#### `Organizational Affilitations`
+
+A variable asks members if they are associated with any other organizational
+or professional affilitiations. Each level is transformed into a unique column.
+
+* __Function step name__: step_other_orgs
+* __Input Variable Name:__ Other Organizational Affiliations, 
+HRCI Certification: Do you hold PHR, SPHR, or GPHR certification?,
+SHRM Certification: Do you hold SHRM-CP or SHRM-SCP certification?
+* __Output Variable Name:__ org_aff_AOM, org_aff_APA, org_aff_APS,
+org_aff_SHRM, org_aff_EAWOP, org_aff_IAAP, org_aff_CPA, org_aff_HRCI,
+org_aff_SHRM,
+* __Format__: Numeric
+* __Type__: Double (integer)
+* __Levels__: 0, 1
 
