@@ -93,7 +93,7 @@ can run the merge to obtain the resultant tibble of active SIOP members
 for the year specified.
 
 ``` r
-#data_final <- make_final_data(demo = demo, dues = dues)
+#data_final <- make_final_data(demo = demo, dues = dues, staff=staff)
 ```
 
 This final dataset then serves as the baseline for all data analytics.
