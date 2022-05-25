@@ -2,8 +2,7 @@
 % Please edit documentation in R/step_interests.R
 \name{step_interests}
 \alias{step_interests}
-\title{Function that cleans the primary interests fields of the original
-demographics dataset, up to a total of 3 unique interest fields.}
+\title{Cleans primary interests categories, up to 3 in total}
 \usage{
 step_interests(df)
 }
@@ -14,8 +13,7 @@ step_interests(df)
 tibble
 }
 \description{
-Function that cleans the primary interests fields of the original
-demographics dataset, up to a total of 3 unique interest fields.
+Cleans primary interests categories, up to 3 in total
 }
 \examples{
 #step_interests(df)

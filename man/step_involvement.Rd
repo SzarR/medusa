@@ -2,8 +2,7 @@
 % Please edit documentation in R/step_involvement.R
 \name{step_involvement}
 \alias{step_involvement}
-\title{Function that cleans the Involvement Sought field of the original
-demographics dataset.}
+\title{Cleans Involvement Sought field}
 \usage{
 step_involvement(df)
 }
@@ -14,8 +13,7 @@ step_involvement(df)
 tibble
 }
 \description{
-Function that cleans the Involvement Sought field of the original
-demographics dataset.
+Cleans Involvement Sought field
 }
 \examples{
 #step_involvement(df = demo_raw)

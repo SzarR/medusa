@@ -400,10 +400,11 @@ or professional affilitiations. Each level is transformed into a unique column.
 * __Function step name__: step_other_orgs
 * __Input Variable Name:__ Other Organizational Affiliations, 
 HRCI Certification: Do you hold PHR, SPHR, or GPHR certification?,
-SHRM Certification: Do you hold SHRM-CP or SHRM-SCP certification?
+SHRM Certification: Do you hold SHRM-CP or SHRM-SCP certification?,
+Are you a licensed psychologist?
 * __Output Variable Name:__ org_aff_AOM, org_aff_APA, org_aff_APS,
 org_aff_SHRM, org_aff_EAWOP, org_aff_IAAP, org_aff_CPA, org_aff_HRCI,
-org_aff_SHRM,
+org_aff_SHRM, licensed
 * __Format__: Numeric
 * __Type__: Double (integer)
 * __Levels__: 0, 1

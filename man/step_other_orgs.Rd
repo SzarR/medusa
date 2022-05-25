@@ -2,8 +2,7 @@
 % Please edit documentation in R/step_other_orgs.R
 \name{step_other_orgs}
 \alias{step_other_orgs}
-\title{Function that cleans the Other Organizational Affiliations field of the original
-demographics dataset.}
+\title{Cleans Other Organizational Affiliations and licensure fields}
 \usage{
 step_other_orgs(df)
 }
@@ -14,8 +13,7 @@ step_other_orgs(df)
 tibble
 }
 \description{
-Function that cleans the Other Organizational Affiliations field of the original
-demographics dataset.
+Cleans Other Organizational Affiliations and licensure fields
 }
 \examples{
 #step_other_orgs(df = demo_raw)
