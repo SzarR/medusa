@@ -51,7 +51,7 @@ step_other_orgs <- function(df) {
         licensed == 'Yes, I am a licensed psychologist.' ~ 1,
         !is.na(org_aff_SHRM) & is.na(org_aff_HRCI) & is.na(licensed) ~ 0,
         is.na(org_aff_SHRM) & !is.na(org_aff_HRCI) & is.na(licensed) ~ 0,
-        TRUE ~ NA_integer_
+        TRUE ~ NA_real_
       )
     ) %>%
     mutate(
