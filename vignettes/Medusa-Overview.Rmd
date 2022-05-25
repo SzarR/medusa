@@ -288,63 +288,6 @@ to a function that obtains today's date.
 * __Levels__: 20 and under, 20-24, 25-29, 30-34, 35-39, 40-44, 45-49, 50-54,
 55-59, 60-64, 65-69, 70+
 
-## Dues Cleaning Stage
-
-The second Excel file to be read into the analysis for building a SIOP 
-membership year is the dues file. The most important variable in the dues
-file specifies the date of the transaction for registration as a member. This
-date serves as classifying the member into the appropriate SIOP calendar year.
-Additionally, the dues file contains information concerning the type of membership 
-that a member is either registering for, or renewing. All cleaning functions
-concerning the dues excel file are enclosed in the step_dues function. They are
-not partitioned out as observed in the demographics excel file cleaning stage
-described above.
-
-#### `Membership Dues`
-
-Membership dues describes the type of transaction that occurred. This information 
-helps us ensure the correct value is charged to the current type of member.
-
-TODO: THE PRICING TABLE FOR SIOP MEMBERS
-
-* __Function step name__: step_dues
-* __Input Variable Name:__ ItemDescription
-* __Output Variable Name:__ Membership_Dues
-* __Format__: Not a direct response from members
-* __Type__: Character
-* __Levels__: Associate, Fellow, Member, Retired Associate, Retired Fellow,
-Retired Member, Student Affiliate, International Affiliate
-
-#### `MD Number`
-
-The MD Number is back translated from the output of `MembershipDues` and categorized
-as a numeric value. In the future, I am not so sure this step will be required,
-as we can just continue to use `MembershipDues` for any type of analysis that
-requires the `MD_Number`.
-
-TODO: VARIABLE REQUIRED OR NOT?
-
-* __Function step name__: step_dues
-* __Input Variable Name:__ Membership_Dues
-* __Output Variable Name:__ MD_Number
-* __Format__: Not a direct response from members
-* __Type__: Double (integer)
-* __Levels__: 1 = Student affiliate, 2 = Associate, 3 = International Affiliate, 
-4 = Member, 5 = Fellow, 6 = Retired International, 7 = Retired International Affiliate, 
-8 = Retired Member, 9 = Retired Fellow
-
-#### `Student or Professional`
-
-The student professor variable is linked to the `MD_Number`. It categorizes a 1,
-or, Student Affiliate, as a student, and all else as a professional.
-
-* __Function step name__: step_dues
-* __Input Variable Name:__ MD_Number
-* __Output Variable Name:__ Student_Prof
-* __Format__: Not a direct response from members
-* __Type__: Double (integer)
-* __Levels__: Student, Professional
-
 #### `Interest Areas`
 
 This variable consists of a series of three columns in the original demographics
@@ -409,3 +352,59 @@ org_aff_SHRM, licensed
 * __Type__: Double (integer)
 * __Levels__: 0, 1
 
+## Dues Cleaning Stage
+
+The second Excel file to be read into the analysis for building a SIOP 
+membership year is the dues file. The most important variable in the dues
+file specifies the date of the transaction for registration as a member. This
+date serves as classifying the member into the appropriate SIOP calendar year.
+Additionally, the dues file contains information concerning the type of membership 
+that a member is either registering for, or renewing. All cleaning functions
+concerning the dues excel file are enclosed in the step_dues function. They are
+not partitioned out as observed in the demographics excel file cleaning stage
+described above.
+
+#### `Membership Dues`
+
+Membership dues describes the type of transaction that occurred. This information 
+helps us ensure the correct value is charged to the current type of member.
+
+TODO: THE PRICING TABLE FOR SIOP MEMBERS
+
+* __Function step name__: step_dues
+* __Input Variable Name:__ ItemDescription
+* __Output Variable Name:__ Membership_Dues
+* __Format__: Not a direct response from members
+* __Type__: Character
+* __Levels__: Associate, Fellow, Member, Retired Associate, Retired Fellow,
+Retired Member, Student Affiliate, International Affiliate
+
+#### `MD Number`
+
+The MD Number is back translated from the output of `MembershipDues` and categorized
+as a numeric value. In the future, I am not so sure this step will be required,
+as we can just continue to use `MembershipDues` for any type of analysis that
+requires the `MD_Number`.
+
+TODO: VARIABLE REQUIRED OR NOT?
+
+* __Function step name__: step_dues
+* __Input Variable Name:__ Membership_Dues
+* __Output Variable Name:__ MD_Number
+* __Format__: Not a direct response from members
+* __Type__: Double (integer)
+* __Levels__: 1 = Student affiliate, 2 = Associate, 3 = International Affiliate, 
+4 = Member, 5 = Fellow, 6 = Retired International, 7 = Retired International Affiliate, 
+8 = Retired Member, 9 = Retired Fellow
+
+#### `Student or Professional`
+
+The student professor variable is linked to the `MD_Number`. It categorizes a 1,
+or, Student Affiliate, as a student, and all else as a professional.
+
+* __Function step name__: step_dues
+* __Input Variable Name:__ MD_Number
+* __Output Variable Name:__ Student_Prof
+* __Format__: Not a direct response from members
+* __Type__: Double (integer)
+* __Levels__: Student, Professional
