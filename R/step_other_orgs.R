@@ -50,9 +50,8 @@ step_other_orgs <- function(df) {
     mutate(
       licensed = case_when(
         licensed == 'Yes, I am a licensed psychologist.' ~ '1',
-        (!is.na(org_aff_SHRM) |
-          !is.na(org_aff_HRCI)) &
-          is.na(licensed) ~ '0',
+        !is.na(org_aff_SHRM) & is.na(org_aff_HRCI) & is.na(licensed) ~ '0',
+        is.na(org_aff_SHRM) & !is.na(org_aff_HRCI) & is.na(licensed) ~ '0',
         TRUE ~ NA_character_
       )
     ) %>%
@@ -64,4 +63,5 @@ step_other_orgs <- function(df) {
     )
 
   return(df_out)
+
 }
