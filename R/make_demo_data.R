@@ -84,6 +84,7 @@ make_demo_data <- function(df,...) {
       .data$org_aff_CPA,
       .data$org_aff_HRCI,
       .data$org_aff_SHRM,
+      .data$licensed,
       .data$inv_share_knowledge,
       .data$inv_collaborate_on_projects,
       .data$inv_conduct_research,
