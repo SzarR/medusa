@@ -38,12 +38,7 @@ step_other_orgs <- function(df) {
                case_when(str_detect(other_orgs, orgs_list[i]) ~ 1, TRUE ~ 0)) # note that 0 = FALSE and 1 = TRUE
   }
 
-  df_out <-
-    df_out %>%
-    mutate(org_aff_HRCI = ifelse(org_aff_HRCI == "No" | is.na(org_aff_HRCI), 0, 1),
-           org_aff_SHRM = ifelse(org_aff_SHRM== "No" | is.na(org_aff_SHRM), 0, 1))
-
-  # Code chunk that deals with licensed psychologists.
+  # Code chunk that deals with licensed psychologists. from 51:55
   # Basically a yes is coded as a 1 automatically,
   # while a no is only coded as a no if two adjacent variables
   # are both NOT na. This is because the licensed psych question
@@ -54,12 +49,17 @@ step_other_orgs <- function(df) {
     df_out %>%
     mutate(
       licensed = case_when(
-        licensed == 'Yes, I am a licensed psychologist.' ~ '1',
-        !is.na(org_aff_SHRM) &
+        licensed == 'Yes, I am a licensed psychologist.' ~ '1',!is.na(org_aff_SHRM) |
           !is.na(org_aff_HRCI) &
           is.na(licensed) ~ '0',
         TRUE ~ NA_character_
       )
+    ) %>%
+    mutate(
+      org_aff_HRCI = ifelse(org_aff_HRCI == "No" |
+                              is.na(org_aff_HRCI), 0, 1),
+      org_aff_SHRM = ifelse(org_aff_SHRM == "No" |
+                              is.na(org_aff_SHRM), 0, 1)
     )
 
   return(df_out)
