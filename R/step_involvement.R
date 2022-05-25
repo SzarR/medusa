@@ -1,5 +1,4 @@
-#' Function that cleans the Involvement Sought field of the original
-#' demographics dataset.
+#' Cleans Involvement Sought field
 #'
 #' @param df a tibble of demographic data
 #'

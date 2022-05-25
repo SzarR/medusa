@@ -1,5 +1,4 @@
-#' Function that cleans the primary interests fields of the original
-#' demographics dataset, up to a total of 3 unique interest fields.
+#' Cleans primary interests categories, up to 3 in total
 #'
 #' @param ...
 #' @param df Specify the raw xlsx demographics file

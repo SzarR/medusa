@@ -1,5 +1,4 @@
-#' Function that cleans the Other Organizational Affiliations field of the original
-#' demographics dataset.
+#' Cleans Other Organizational Affiliations and licensure fields
 #'
 #' @param df a tibble of demographic data
 #'
@@ -49,10 +48,10 @@ step_other_orgs <- function(df) {
     df_out %>%
     mutate(
       licensed = case_when(
-        licensed == 'Yes, I am a licensed psychologist.' ~ '1',
-        !is.na(org_aff_SHRM) & is.na(org_aff_HRCI) & is.na(licensed) ~ '0',
-        is.na(org_aff_SHRM) & !is.na(org_aff_HRCI) & is.na(licensed) ~ '0',
-        TRUE ~ NA_character_
+        licensed == 'Yes, I am a licensed psychologist.' ~ 1,
+        !is.na(org_aff_SHRM) & is.na(org_aff_HRCI) & is.na(licensed) ~ 0,
+        is.na(org_aff_SHRM) & !is.na(org_aff_HRCI) & is.na(licensed) ~ 0,
+        TRUE ~ NA_integer_
       )
     ) %>%
     mutate(
