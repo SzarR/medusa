@@ -23,7 +23,7 @@ step_other_orgs <- function(df) {
 
   orgs_list <-
     df_out %>%
-    separate(other_orgs, into = orgs_count_names) %>%
+    separate(other_orgs, into = orgs_count_names, extra = "drop", fill = "right") %>%
     pivot_longer(starts_with("org_")) %>%
     pull(value) %>%
     unique() %>%
