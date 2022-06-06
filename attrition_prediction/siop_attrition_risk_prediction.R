@@ -26,8 +26,8 @@ load_siop_data<-function(year, dat_location){
       "/Cleaned/R/",
       "Membership Data ",
       year, " R.csv"
-      )
-    )%>%janitor::clean_names()%>%
+    )
+  )%>%janitor::clean_names()%>%
     mutate(
       year_started_in_i_o_field= year_started_in_i_o_field%>%
         str_split(pattern = "\\, ")%>%
@@ -38,7 +38,7 @@ load_siop_data<-function(year, dat_location){
         sapply("[", 1)%>%as.integer(),
 
       siop_year= year
-      )
+    )
 }
 
 
@@ -71,7 +71,7 @@ get_attrition_info<-function(years, dat){
 
     output_dat<-dat_begin%>%left_join(
       dat_begin%>%filter(!sid %in% ids_end)%>%
-      mutate(attrition=1),
+        mutate(attrition=1),
       by = c("sid", "siop_year")
     )%>%
       mutate(attrition=ifelse(is.na(attrition), 0, attrition))
@@ -98,7 +98,7 @@ siop_dat1%>%group_by(siop_year)%>%
     unique_members=length(unique(sid)),
     attrition_count=sum(attrition),
     attrition_pct=attrition_count/unique_members
-    )
+  )
 
 
 siop_dat1%>%group_by(siop_year, membership_dues)%>%
