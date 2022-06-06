@@ -108,7 +108,12 @@ siop_dat1%>%group_by(siop_year, membership_dues)%>%
     attrition_pct=attrition_count/unique_members
   )
 
-
+siop_dat1%>%group_by(siop_year, membership_dues, highest_degree)%>%
+  summarise(
+    unique_members=length(unique(sid)),
+    attrition_count=sum(attrition),
+    attrition_pct=attrition_count/unique_members
+  )%>%View()
 
 
 
