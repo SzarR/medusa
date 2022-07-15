@@ -15,7 +15,8 @@ step_academicapplied <- function(df) {
           .data$`Academic Sector (Primary)` != "" ~ 'Academic',
           .data$`Government Sector (Primary)` != "" ~ 'Applied',
           .data$`Private Sector (Primary)` != "" ~ 'Applied',
-          .data$`Other Sector (Primary)` == "Other" ~ 'Applied'
+          .data$`Other Sector (Primary)` == "Other" ~ 'Applied',
+          TRUE ~ "Student" # Added per request, assumption NA = Student.
         )
     ) %>%
     mutate(
