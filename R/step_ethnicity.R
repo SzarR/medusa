@@ -42,13 +42,17 @@ step_ethnicity <- function(df, detailed_types=FALSE) {
           case_when(
             str_detect(Ethnicity, "(?i)half") | str_detect(Ethnicity, "Multi-racial") | str_detect(Ethnicity, " / ") ~ "Multi-racial",
             str_detect(Ethnicity, "Arabic") | str_detect(Ethnicity, "Middle Eastern") | str_detect(Ethnicity, "White/Caucasian") ~ "White",
-            str_detect(Ethnicity, "Black") | str_detect(Ethnicity, "Cambodian") ~ "Black or African American",
+            str_detect(Ethnicity, "Black") ~ "Black or African American",
             str_detect(Ethnicity, "Chin[:alpha:]*") | str_detect(Ethnicity, "Korea[:alpha:]*") | str_detect(Ethnicity, "Japan[:alpha:]*") |
-            str_detect(Ethnicity, "(?i)india[:alpha:]*") | str_detect(Ethnicity, "(?i)pakist[:alpha:]*") | str_detect(Ethnicity, "(?i)vietn[:alpha:]*") |
-            str_detect(Ethnicity, "(?i)Hmong[:alpha:]*") | str_detect(Ethnicity, "(?i)Malay[:alpha:]*") | str_detect(Ethnicity, "(?i)Nepal[:alpha:]*") |
-            str_detect(Ethnicity, "(?i)Filipino[:alpha:]*") | str_detect(Ethnicity, "(?i)Philippi[:alpha:]*") | str_detect(Ethnicity, "(?i)Thai[:alpha:]*") |
-            str_detect(Ethnicity, "(?i)Taiwan[:alpha:]*") | str_detect(Ethnicity, "(?i)Asia[:alpha:]*") ~ "Asian",
+              str_detect(Ethnicity, "(?i)india[:alpha:]*") | str_detect(Ethnicity, "(?i)pakist[:alpha:]*") | str_detect(Ethnicity, "(?i)vietn[:alpha:]*") |
+              str_detect(Ethnicity, "(?i)Hmong[:alpha:]*") | str_detect(Ethnicity, "(?i)Malay[:alpha:]*") | str_detect(Ethnicity, "(?i)Nepal[:alpha:]*") |
+              str_detect(Ethnicity, "(?i)Filipino[:alpha:]*") | str_detect(Ethnicity, "(?i)Philippi[:alpha:]*") | str_detect(Ethnicity, "(?i)Thai[:alpha:]*") |
+              str_detect(Ethnicity, "(?i)Taiwan[:alpha:]*") | str_detect(Ethnicity, "(?i)Asia[:alpha:]*") | str_detect(Ethnicity, "Cambodian") |
+              str_detect(Ethnicity, "(?i)Singa[:alpha:]*") | str_detect(Ethnicity, "(?i)Indo[:alpha:]*") 
+             ~ "Asian",
             str_detect(Ethnicity, "Hispanic") ~ "Hispanic or Latino",
+            str_detect(Ethnicity, "(?)Native American") ~ "Native American",
+            str_detect(Ethnicity, "Pacific Islander*") ~ "Pacific Islander",
             str_detect(Ethnicity, "Oth") ~ "Other",
             str_detect(Ethnicity, "0") | str_detect(Ethnicity, "#N/A") | str_detect(Ethnicity, "Not Reported") ~ NA_character_,
             TRUE ~ NA_character_
