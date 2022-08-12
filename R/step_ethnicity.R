@@ -51,8 +51,8 @@ step_ethnicity <- function(df, detailed_types=FALSE) {
               str_detect(Ethnicity, "(?i)Singa[:alpha:]*") | str_detect(Ethnicity, "(?i)Indo[:alpha:]*") 
              ~ "Asian",
             str_detect(Ethnicity, "Hispanic") ~ "Hispanic or Latino",
-            str_detect(Ethnicity, "(?)Native American") ~ "Native American",
-            str_detect(Ethnicity, "Pacific Islander*") ~ "Pacific Islander",
+            str_detect(Ethnicity, "(?)Native American") ~ "American Indian or Alaska Native",
+            str_detect(Ethnicity, "Pacific Islander*") ~ "Native Hawaiian or Other Pacific Islander",
             str_detect(Ethnicity, "Oth") ~ "Other",
             str_detect(Ethnicity, "0") | str_detect(Ethnicity, "#N/A") | str_detect(Ethnicity, "Not Reported") ~ NA_character_,
             TRUE ~ NA_character_
