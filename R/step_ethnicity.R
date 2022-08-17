@@ -60,10 +60,10 @@ step_ethnicity <- function(df, detailed_types=FALSE) {
               str_detect(Ethnicity, "(?i)Hmong[:alpha:]*") | str_detect(Ethnicity, "(?i)Malay[:alpha:]*") | str_detect(Ethnicity, "(?i)Nepal[:alpha:]*") |
               str_detect(Ethnicity, "(?i)Filipino[:alpha:]*") | str_detect(Ethnicity, "(?i)Philippi[:alpha:]*") | str_detect(Ethnicity, "(?i)Thai[:alpha:]*") |
               str_detect(Ethnicity, "(?i)Taiwan[:alpha:]*") | str_detect(Ethnicity, "(?i)Asia[:alpha:]*") | str_detect(Ethnicity, "Cambodian") |
-              str_detect(Ethnicity, "(?i)Singa[:alpha:]*") | str_detect(Ethnicity, "(?i)Indo[:alpha:]*") 
+              str_detect(Ethnicity, "(?i)Singa[:alpha:]*") | str_detect(Ethnicity, "(?i)Indo[:alpha:]*")
              ~ "Asian",
             str_detect(Ethnicity, "Hispanic") ~ "Hispanic or Latino",
-            str_detect(Ethnicity, "(?)Native American") ~ "American Indian or Alaska Native",
+            str_detect(Ethnicity, "(?i)Native American") ~ "American Indian or Alaska Native",
             str_detect(Ethnicity, "Pacific Islander*") ~ "Native Hawaiian or Other Pacific Islander",
             str_detect(Ethnicity, "Oth") ~ "Other",
             str_detect(Ethnicity, "0") | str_detect(Ethnicity, "#N/A") | str_detect(Ethnicity, "Not Reported") ~ NA_character_,
