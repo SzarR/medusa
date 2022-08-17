@@ -30,7 +30,9 @@ step_dues <- function(df, year) {
           ItemDescription == "Member Returning Dues" ~ 'Member',
           ItemDescription == "New Associate Dues" ~ 'Associate',
           ItemDescription == "New Member Dues" ~ 'Member',
-          ItemDescription == "New Student Affiliate Dues" ~ 'Student Affiliate',
+          #ItemDescription == "New Student Affiliate Dues" ~ 'Student Affiliate',
+          ItemDescription == "New Student Dues" ~ 'Student Affiliate',
+
           ItemDescription == "Pathway Upgrade to Member From Associate" ~ 'Member',
           ItemDescription == "Retired Associate Dues" ~ 'Associate',
           ItemDescription == "Retired Associate Renewal Dues" ~ 'Retired Associate',
