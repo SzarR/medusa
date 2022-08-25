@@ -14,13 +14,16 @@ make_final_data <- function(demo, dues, staff) {
     left_join(x = dues,
               y = demo,
               by = "SID")
-  
+
   # update Academic_Applied based on Membership_Dues
-  df <- 
-    mutate(.data$Academic_Applied = case_when(
-                                      .data$Membership_Dues == "Student Affiliate" ~ "Student", 
-                                      TRUE ~ .data$Academic_Applied))
-                  
+  df <-
+    df %>%
+    mutate(
+      .data$Academic_Applied = case_when(
+        .data$Membership_Dues == "Student Affiliate" ~ "Student",
+        TRUE ~ .data$Academic_Applied
+      )
+    )
 
   df <- step_sid(df,
                  staff = staff)
