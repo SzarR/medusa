@@ -7,7 +7,7 @@
 #' @export
 #'
 #' @examples
-step_highestdegree <- function(df, include_ABD = FALSE) {
+step_highestdegree <- function(df, include_ABD = TRUE) {
 
   if(include_ABD == TRUE) {
 
