@@ -1,5 +1,5 @@
 ---
-title: "Overview of Medusa Package"
+title: "Variable Definitions"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{Medusa-Overview}
@@ -188,7 +188,7 @@ the School variable is open ended, a custom database has been built that
 joins with the main analysis file to help streamline reporting of schools
 and their profit or non-profit status.
 
-#### `HighestDegree`
+#### `Highest_Degree`
 
 Highest_Degree specifies the level of education that was the highest obtained
 for a specific SIOP member. This variable requires a lot of cleaning due to the
@@ -200,6 +200,7 @@ and converted all ABD status people to a Master's degree. We also included
 the MOP degree under Masters.
 
 * __Function step name__: step_highestdegree
+* __Function Last Updated__: February 1, 2023
 * __Input Variable Name:__ Degree
 * __Output Variable Name:__ Highest_Degree
 * __Format__: Open ended response through 2021. Then close ended response > 2021

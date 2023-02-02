@@ -40,7 +40,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">medusa</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">2.1.4</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">2.2.0</span>
       </span>
     </div>
 
@@ -50,7 +50,7 @@
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
      
     <span class="caret"></span>
@@ -85,15 +85,30 @@
 
     
     
-<p>This vignette dives provides details concerning the functions that comprise the medusa package. The readme file will demonstrate how to use the three main functions to clean your data. The purpose of this vignette is to provide further context concerning the standards we have set for each of the demographic variables. To a certain degree, this vignette could be thought of as an update to the <em>SIOP Membership Analytics Data Prep Guide</em> that was previously used to keep track of the various data cleaning strategies required to clean the yearly membership data. Most of the functions developed were based from the logic and work of previous volunteers. Therefore, we always invite others to collaborate and share information or methods that would better help streamline the work we are continually doing on the data. To begin, some background context concerning the data itself is provided below:</p>
+<p>This vignette dives provides details concerning the functions that
+comprise the medusa package. The readme file will demonstrate how to use
+the three main functions to clean your data. The purpose of this
+vignette is to provide further context concerning the standards we have
+set for each of the demographic variables. To a certain degree, this
+vignette could be thought of as an update to the <em>SIOP Membership
+Analytics Data Prep Guide</em> that was previously used to keep track of
+the various data cleaning strategies required to clean the yearly
+membership data. Most of the functions developed were based from the
+logic and work of previous volunteers. Therefore, we always invite
+others to collaborate and share information or methods that would better
+help streamline the work we are continually doing on the data. To begin,
+some background context concerning the data itself is provided
+below:</p>
 <div class="section level3">
 <h3 id="membership-year-ranges">Membership Year Ranges<a class="anchor" aria-label="anchor" href="#membership-year-ranges"></a>
 </h3>
 <ul>
 <li>From 2000 - 2001, a SIOP year ran from 05/01 through 08/31.</li>
 <li>From 2002 - 2006, a SIOP year ran from 07/01 through 10/31.</li>
-<li>From 2007 onward, a SIOP year runs from 03/01 to 06/30. (For 2021: 03/01/20 - 06/30/2021)</li>
-<li>SID is a unique identifer, created by the SIOP AO and serves as a unique key.</li>
+<li>From 2007 onward, a SIOP year runs from 03/01 to 06/30. (For 2021:
+03/01/20 - 06/30/2021)</li>
+<li>SID is a unique identifer, created by the SIOP AO and serves as a
+unique key.</li>
 </ul>
 </div>
 <div class="section level2">
@@ -102,12 +117,19 @@
 <div class="section level3">
 <h3 id="global-variables">Global Variables<a class="anchor" aria-label="anchor" href="#global-variables"></a>
 </h3>
-<p>The original dataset provided by the AO contains a lot of columns and variables. Not all these features are equally important for the time being. We have focused our initial efforts on streamlining and cleaning the critical demographic variables that are used either for modeling or provided in the annual membership report. This section of the vignette will outline the various variables, their type, and levels.</p>
+<p>The original dataset provided by the AO contains a lot of columns and
+variables. Not all these features are equally important for the time
+being. We have focused our initial efforts on streamlining and cleaning
+the critical demographic variables that are used either for modeling or
+provided in the annual membership report. This section of the vignette
+will outline the various variables, their type, and levels.</p>
 <div class="section level4">
 <h4 id="sid">
 <code>SID</code><a class="anchor" aria-label="anchor" href="#sid"></a>
 </h4>
-<p>A unique way of identifying members in an anonymous fashion. The length of the SID is typically six digits long. It serves as the primary method to run joins between various datasets for further analyses.</p>
+<p>A unique way of identifying members in an anonymous fashion. The
+length of the SID is typically six digits long. It serves as the primary
+method to run joins between various datasets for further analyses.</p>
 <ul>
 <li>
 <strong>Type</strong>: Double</li>
@@ -117,13 +139,21 @@
 <div class="section level3">
 <h3 id="geography-cleaning-stage">Geography Cleaning Stage<a class="anchor" aria-label="anchor" href="#geography-cleaning-stage"></a>
 </h3>
-<p>There are several clusters for cleaning data. One of which, geography, focuses on cleaning the information regarding a member’s location information, mainly: * City * State * Country</p>
-<p>For state, an important stipulation is noted that this variable is only populated for members within the United States.</p>
+<p>There are several clusters for cleaning data. One of which,
+geography, focuses on cleaning the information regarding a member’s
+location information, mainly: * City * State * Country</p>
+<p>For state, an important stipulation is noted that this variable is
+only populated for members within the United States.</p>
 <div class="section level4">
 <h4 id="city">
 <code>City</code><a class="anchor" aria-label="anchor" href="#city"></a>
 </h4>
-<p>The world city of a member’s residence. Smaller towns or cities may be recoded into a larger, nearby city to help streamline analytics and aggregation. Also, acronyms for cities such as East, West, South, could be consolidated into the main city name. For example, East Orange would turn into Orange. Additionally, abbreviations such as <em>Ft.</em> or <em>Mt.</em> are turned into their full names for consistency.</p>
+<p>The world city of a member’s residence. Smaller towns or cities may
+be recoded into a larger, nearby city to help streamline analytics and
+aggregation. Also, acronyms for cities such as East, West, South, could
+be consolidated into the main city name. For example, East Orange would
+turn into Orange. Additionally, abbreviations such as <em>Ft.</em> or
+<em>Mt.</em> are turned into their full names for consistency.</p>
 <ul>
 <li>
 <strong>Function step name</strong>: step_city</li>
@@ -141,8 +171,14 @@
 <h4 id="state">
 <code>State</code><a class="anchor" aria-label="anchor" href="#state"></a>
 </h4>
-<p>The U.S. state of member’s residence.For classifying State, the following were not included as valid states: * Guam, with the acronym GU * Virgin Islands, with the acronym VI * Puerto Rico as PR - IS THIS TRUE??????? TODO</p>
-<p>As an aside, in Australia, there is a state known by the acronym of WA. For cases that identify as their country of residence being Australia, all State responses were recoded to NA in order to avoid any confusion with Washington state in the USA.</p>
+<p>The U.S. state of member’s residence.For classifying State, the
+following were not included as valid states: * Guam, with the acronym GU
+* Virgin Islands, with the acronym VI * Puerto Rico as PR - IS THIS
+TRUE??????? TODO</p>
+<p>As an aside, in Australia, there is a state known by the acronym of
+WA. For cases that identify as their country of residence being
+Australia, all State responses were recoded to NA in order to avoid any
+confusion with Washington state in the USA.</p>
 <ul>
 <li>
 <strong>Function step name</strong>: step_state</li>
@@ -160,7 +196,11 @@
 <h4 id="country">
 <code>Country</code><a class="anchor" aria-label="anchor" href="#country"></a>
 </h4>
-<p>The country of a member’s residence. There is no cleaning that goes into this function step because the country names are clean. The only significant change that happens to this demographic variable is the imputation of United States where State_US has a valid state abbreviation.</p>
+<p>The country of a member’s residence. There is no cleaning that goes
+into this function step because the country names are clean. The only
+significant change that happens to this demographic variable is the
+imputation of United States where State_US has a valid state
+abbreviation.</p>
 <ul>
 <li>
 <strong>Function step name</strong>: step_country</li>
@@ -178,18 +218,25 @@
 <div class="section level3">
 <h3 id="membership-cleaning-stage">Membership Cleaning Stage<a class="anchor" aria-label="anchor" href="#membership-cleaning-stage"></a>
 </h3>
-<p>Cleaning the membership columns deals primarily with three demographic variables: career, membership category and whether the member is in an academic or applied setting.</p>
+<p>Cleaning the membership columns deals primarily with three
+demographic variables: career, membership category and whether the
+member is in an academic or applied setting.</p>
 <div class="section level5">
 <h5 id="primary_sector">
 <code>Primary_Sector</code><a class="anchor" aria-label="anchor" href="#primary_sector"></a>
 </h5>
-<p>The <code>Primary_Sector</code> variable describes the type of field the member is operating in. The fields to be determined most relevant for analyses are included in the table below, under <em>Levels</em>.</p>
-<p>TODO: Insert more background information on why this categorization exists. TODO: Make this a factor-level variable?</p>
+<p>The <code>Primary_Sector</code> variable describes the type of field
+the member is operating in. The fields to be determined most relevant
+for analyses are included in the table below, under <em>Levels</em>.</p>
+<p>TODO: Insert more background information on why this categorization
+exists. TODO: Make this a factor-level variable?</p>
 <ul>
 <li>
 <strong>Function step name</strong>: step_sector</li>
 <li>
-<strong>Input Variable Name:</strong> Academic Sector (Primary), Government Sector (Primary), Private Sector (Primary), Other Sector (Primary), Not Provided (Primary)</li>
+<strong>Input Variable Name:</strong> Academic Sector (Primary),
+Government Sector (Primary), Private Sector (Primary), Other Sector
+(Primary), Not Provided (Primary)</li>
 <li>
 <strong>Output Variable Name:</strong> Primary_Sector</li>
 <li>
@@ -197,19 +244,28 @@
 <li>
 <strong>Type</strong>: Character</li>
 <li>
-<strong>Levels</strong>: Academy, Government, Private, Other, Not Provided</li>
+<strong>Levels</strong>: Academy, Government, Private, Other, Not
+Provided</li>
 </ul>
 </div>
 <div class="section level5">
 <h5 id="primary_occupation">
 <code>Primary_Occupation</code><a class="anchor" aria-label="anchor" href="#primary_occupation"></a>
 </h5>
-<p>The <code>Primary_Occupation</code> variable is the second output from the <code>step_sector</code> cleaning function. It provides a much more nuanced approach to reporting the occupations of SIOP members. There exist at least thirty categorizations for this variable, ranging from Consulting firm to Financial services. This variable, in combination with <code>Primary_Sector</code> provides an interesting perspective on types of roles by the various sectors.</p>
+<p>The <code>Primary_Occupation</code> variable is the second output
+from the <code>step_sector</code> cleaning function. It provides a much
+more nuanced approach to reporting the occupations of SIOP members.
+There exist at least thirty categorizations for this variable, ranging
+from Consulting firm to Financial services. This variable, in
+combination with <code>Primary_Sector</code> provides an interesting
+perspective on types of roles by the various sectors.</p>
 <ul>
 <li>
 <strong>Function step name</strong>: step_sector</li>
 <li>
-<strong>Input Variable Name:</strong> Academic Sector (Primary), Government Sector (Primary), Private Sector (Primary), Other Sector (Primary), Not Provided (Primary)</li>
+<strong>Input Variable Name:</strong> Academic Sector (Primary),
+Government Sector (Primary), Private Sector (Primary), Other Sector
+(Primary), Not Provided (Primary)</li>
 <li>
 <strong>Output Variable Name:</strong> Primary_Occupation</li>
 <li>
@@ -224,8 +280,11 @@
 <h5 id="membergroup">
 <code>MemberGroup</code><a class="anchor" aria-label="anchor" href="#membergroup"></a>
 </h5>
-<p>MemberGroup documents whether a member in the data table is an individual member within the society, or a prospect that has not yet fully signed up.</p>
-<p>TODO: Flesh this out more, why do we capture this and how does it work?</p>
+<p>MemberGroup documents whether a member in the data table is an
+individual member within the society, or a prospect that has not yet
+fully signed up.</p>
+<p>TODO: Flesh this out more, why do we capture this and how does it
+work?</p>
 <ul>
 <li>
 <strong>Function step name</strong>: step_membergroup</li>
@@ -245,13 +304,17 @@
 <h5 id="academic_applied">
 <code>Academic_Applied</code><a class="anchor" aria-label="anchor" href="#academic_applied"></a>
 </h5>
-<p>The AcademicApplied variable captures whether an individual is within the academic sector, or the applied sector. It is a dichotomous variable.</p>
+<p>The AcademicApplied variable captures whether an individual is within
+the academic sector, or the applied sector. It is a dichotomous
+variable.</p>
 <p>TODO: We categorize Other Sector as Applied, is this okay?</p>
 <ul>
 <li>
 <strong>Function step name</strong>: step_academicapplied</li>
 <li>
-<strong>Input Variable Name:</strong> Academic Sector (Primary), Government Sector (Primary), Private Sector (Primary), Other Sector (Primary)</li>
+<strong>Input Variable Name:</strong> Academic Sector (Primary),
+Government Sector (Primary), Private Sector (Primary), Other Sector
+(Primary)</li>
 <li>
 <strong>Output Variable Name:</strong> AcademicApplied</li>
 <li>
@@ -266,12 +329,23 @@
 <div class="section level3">
 <h3 id="education-cleaning-stage">Education Cleaning Stage<a class="anchor" aria-label="anchor" href="#education-cleaning-stage"></a>
 </h3>
-<p>Education cleaning deals with demographic variables such as highest degree completed, institution attended, and the type of institution. Since the School variable is open ended, a custom database has been built that joins with the main analysis file to help streamline reporting of schools and their profit or non-profit status.</p>
+<p>Education cleaning deals with demographic variables such as highest
+degree completed, institution attended, and the type of institution.
+Since the School variable is open ended, a custom database has been
+built that joins with the main analysis file to help streamline
+reporting of schools and their profit or non-profit status.</p>
 <div class="section level5">
 <h5 id="highestdegree">
 <code>HighestDegree</code><a class="anchor" aria-label="anchor" href="#highestdegree"></a>
 </h5>
-<p>Highest_Degree specifies the level of education that was the highest obtained for a specific SIOP member. This variable requires a lot of cleaning due to the messy nature of the data. Lots of members included various acronyms, and specialized degree titles for this field, making the standardization and reporting tedious.</p>
+<p>Highest_Degree specifies the level of education that was the highest
+obtained for a specific SIOP member. This variable requires a lot of
+cleaning due to the messy nature of the data. Lots of members included
+various acronyms, and specialized degree titles for this field, making
+the standardization and reporting tedious.</p>
+<p>Update on 02/01/2023 - We decided to do away with the include_ABD
+parameter and converted all ABD status people to a Master’s degree. We
+also included the MOP degree under Masters.</p>
 <ul>
 <li>
 <strong>Function step name</strong>: step_highestdegree</li>
@@ -280,18 +354,24 @@
 <li>
 <strong>Output Variable Name:</strong> Highest_Degree</li>
 <li>
-<strong>Format</strong>: Open ended response</li>
+<strong>Format</strong>: Open ended response through 2021. Then
+close ended response &gt; 2021</li>
 <li>
 <strong>Type</strong>: Factor</li>
 <li>
-<strong>Levels</strong>: Associate, Bachelors, Doctorate, Other, ABD, Masters</li>
+<strong>Levels</strong>: Associate, Bachelors, Doctorate, Other,
+Masters</li>
 </ul>
 </div>
 <div class="section level5">
 <h5 id="priv_publ">
 <code>Priv_Publ</code><a class="anchor" aria-label="anchor" href="#priv_publ"></a>
 </h5>
-<p>Priv_Publ specifies the level of education that was the highest obtained for a specific SIOP member. This variable requires a lot of cleaning due to the messy nature of the data. Lots of members included various acronyms, and specialized degree titles for this field, making the standardization and reporting tedious.</p>
+<p>Priv_Publ specifies the level of education that was the highest
+obtained for a specific SIOP member. This variable requires a lot of
+cleaning due to the messy nature of the data. Lots of members included
+various acronyms, and specialized degree titles for this field, making
+the standardization and reporting tedious.</p>
 <ul>
 <li>
 <strong>Function step name</strong>: step_privatepublic</li>
@@ -311,7 +391,10 @@
 <h5 id="profitnon">
 <code>ProfitNon</code><a class="anchor" aria-label="anchor" href="#profitnon"></a>
 </h5>
-<p>The final school related demographic cleaning step concerns whether a school or institution is labelled as a for-profit or non-profit. The categorizations were developed as an independent study that culminated in the creation of a database of schools</p>
+<p>The final school related demographic cleaning step concerns whether a
+school or institution is labelled as a for-profit or non-profit. The
+categorizations were developed as an independent study that culminated
+in the creation of a database of schools</p>
 <ul>
 <li>
 <strong>Function step name</strong>: step_privatepublic</li>
@@ -331,7 +414,9 @@
 <div class="section level3">
 <h3 id="demographics-cleaning-stage">Demographics Cleaning Stage<a class="anchor" aria-label="anchor" href="#demographics-cleaning-stage"></a>
 </h3>
-<p>Demographic cleaning deals with traditional variables, such as gender, ethnicity, birthdate, and age. The categorizations used are considered to be best practices.</p>
+<p>Demographic cleaning deals with traditional variables, such as
+gender, ethnicity, birthdate, and age. The categorizations used are
+considered to be best practices.</p>
 <div class="section level5">
 <h5 id="gender">
 <code>Gender</code><a class="anchor" aria-label="anchor" href="#gender"></a>
@@ -356,8 +441,10 @@
 <h5 id="birthdate">
 <code>Birthdate</code><a class="anchor" aria-label="anchor" href="#birthdate"></a>
 </h5>
-<p>Birthdate represents the date of birth of the member. It is coded as a proper date variable.</p>
-<p>TODO: Clean out birthdates that are obviously wrong, like &gt; 100 years of age.</p>
+<p>Birthdate represents the date of birth of the member. It is coded as
+a proper date variable.</p>
+<p>TODO: Clean out birthdates that are obviously wrong, like &gt; 100
+years of age.</p>
 <ul>
 <li>
 <strong>Function step name</strong>: step_birthdate</li>
@@ -375,7 +462,8 @@
 <h5 id="ethnicity">
 <code>Ethnicity</code><a class="anchor" aria-label="anchor" href="#ethnicity"></a>
 </h5>
-<p>Ethnicity represents the race of the SIOP member. The standard seven categorizations are used for this.</p>
+<p>Ethnicity represents the race of the SIOP member. The standard seven
+categorizations are used for this.</p>
 <ul>
 <li>
 <strong>Function step name</strong>: step_ethnicity</li>
@@ -388,14 +476,18 @@
 <li>
 <strong>Type</strong>: Factor</li>
 <li>
-<strong>Levels</strong>: White, Black or African American, Asian, Two or more races, Hispanic or Latino, other, Native American/Alaska Native, Native Hawaiian or other Pacific Islander</li>
+<strong>Levels</strong>: White, Black or African American, Asian,
+Two or more races, Hispanic or Latino, other, Native American/Alaska
+Native, Native Hawaiian or other Pacific Islander</li>
 </ul>
 </div>
 <div class="section level5">
 <h5 id="age-group">
 <code>Age Group</code><a class="anchor" aria-label="anchor" href="#age-group"></a>
 </h5>
-<p>Age group is not directly queried from members. Instead, we use the Birthdate variable to calculate the current age of the member, by comparing the birthdate to a function that obtains today’s date.</p>
+<p>Age group is not directly queried from members. Instead, we use the
+Birthdate variable to calculate the current age of the member, by
+comparing the birthdate to a function that obtains today’s date.</p>
 <ul>
 <li>
 <strong>Function step name</strong>: step_agegroup</li>
@@ -408,19 +500,135 @@
 <li>
 <strong>Type</strong>: Factor</li>
 <li>
-<strong>Levels</strong>: 20 and under, 20-24, 25-29, 30-34, 35-39, 40-44, 45-49, 50-54, 55-59, 60-64, 65-69, 70+</li>
+<strong>Levels</strong>: 20 and under, 20-24, 25-29, 30-34, 35-39,
+40-44, 45-49, 50-54, 55-59, 60-64, 65-69, 70+</li>
+</ul>
+</div>
+<div class="section level5">
+<h5 id="interest-areas">
+<code>Interest Areas</code><a class="anchor" aria-label="anchor" href="#interest-areas"></a>
+</h5>
+<p>This variable consists of a series of three columns in the original
+demographics dataset. Minimal cleaning was performed, such as removing
+multiple categories in the first, second, or third interest area.
+Several members put more than one category in a single variable, for
+example, for int_1, somebody may have put Psychometrics and
+Organizational Culture. In this instance, organizational culture would
+have been dropped and Psychometrics retained for int_1. This is to help
+streamline the analytics and set expectations on the data file year
+after year.</p>
+<ul>
+<li>
+<strong>Function step name</strong>: step_interests</li>
+<li>
+<strong>Input Variable Name:</strong> Interest Area (first choice),
+Interest Area (second choice), Interest Area (third choice),</li>
+<li>
+<strong>Output Variable Name:</strong> int_1, int_2, int_3</li>
+<li>
+<strong>Format</strong>: Close ended response</li>
+<li>
+<strong>Type</strong>: character</li>
+<li>
+<strong>Levels</strong>: Coaching/Leadership Development,
+Testing/Assessment, Leadership, Inclusion/Diversity, Careers/Career
+Planning/Mentoring/Socialization/Onboarding/Retirement, Staffing,
+Groups/Teams, Job Analysis/Job Design/Competency Modeling, Job
+Attitudes/Engagement, Occupational Health/Safety/Stress &amp;
+Strain/Aging, Organizational Performance/Change
+Management/Downsizing/OD, Measurement/Statistical Techniques,
+Organizational Culture/Climate, Performance
+Appraisal/Feedback/Management/Goal-Setting, I-O Psychology
+Education/Professional Development, Conflict/Counterproductive
+Behavior/Harassment/Violence/Workplace Deviance, Personality,
+Global/International/Cross-Cultural Issues, Training, Research
+Methodology, Work and Family/Non-Work Life/Leisure/Flexible Work
+Arrangements, Motivation/Rewards/Compensation, Consulting
+Practices/Ethical Issues, Emotions/Emotional Labor, Employee
+Withdrawal/Retention, Strategic HR/Utility/Changing Role of HR, Job
+Performance/Citizenship Behavior, Technology, Legal Issues/Employment
+Law/Union Issues/Labor Relations, Innovation/Creativity,
+Judgment/Decision Making, Other, Customer Service/Consumer Psychology,
+Human Factors/Ergonomics, Organizational Justice, Teaching I-O
+Psychology/Student Affiliate Issues/Professional Development in I-O
+Psychology, Pro-Social</li>
+</ul>
+</div>
+<div class="section level5">
+<h5 id="involvement-seeking">
+<code>Involvement Seeking</code><a class="anchor" aria-label="anchor" href="#involvement-seeking"></a>
+</h5>
+<p>A variable asks members if they are seeking any involvement in a wide
+range of activities that are aligned with SIOP initiatives. Each unique
+category is created into a column with a 0 and 1 for whether a member
+possesses the inclination toward that activity.</p>
+<ul>
+<li>
+<strong>Function step name</strong>: step_involvement</li>
+<li>
+<strong>Input Variable Name:</strong> Involvement Sought</li>
+<li>
+<strong>Output Variable Name:</strong> inv_share_knowledge,
+inv_collaborate_on_projects, inv_conduct_research,
+inv_join_interdisclipinary_teams, inv_other,
+inv_present_at_meetings_conferences, inv_join_communities_of_interest,
+inv_network, inv_consult_to_business</li>
+<li>
+<strong>Format</strong>: Numeric</li>
+<li>
+<strong>Type</strong>: Double (integer)</li>
+<li>
+<strong>Levels</strong>: 0, 1</li>
+</ul>
+</div>
+<div class="section level5">
+<h5 id="organizational-affilitations">
+<code>Organizational Affilitations</code><a class="anchor" aria-label="anchor" href="#organizational-affilitations"></a>
+</h5>
+<p>A variable asks members if they are associated with any other
+organizational or professional affilitiations. Each level is transformed
+into a unique column.</p>
+<ul>
+<li>
+<strong>Function step name</strong>: step_other_orgs</li>
+<li>
+<strong>Input Variable Name:</strong> Other Organizational
+Affiliations, HRCI Certification: Do you hold PHR, SPHR, or GPHR
+certification?, SHRM Certification: Do you hold SHRM-CP or SHRM-SCP
+certification?, Are you a licensed psychologist?</li>
+<li>
+<strong>Output Variable Name:</strong> org_aff_AOM, org_aff_APA,
+org_aff_APS, org_aff_SHRM, org_aff_EAWOP, org_aff_IAAP, org_aff_CPA,
+org_aff_HRCI, org_aff_SHRM, licensed</li>
+<li>
+<strong>Format</strong>: Numeric</li>
+<li>
+<strong>Type</strong>: Double (integer)</li>
+<li>
+<strong>Levels</strong>: 0, 1</li>
 </ul>
 </div>
 </div>
 <div class="section level3">
 <h3 id="dues-cleaning-stage">Dues Cleaning Stage<a class="anchor" aria-label="anchor" href="#dues-cleaning-stage"></a>
 </h3>
-<p>The second Excel file to be read into the analysis for building a SIOP membership year is the dues file. The most important variable in the dues file specifies the date of the transaction for registration as a member. This date serves as classifying the member into the appropriate SIOP calendar year. Additionally, the dues file contains information concerning the type of membership that a member is either registering for, or renewing. All cleaning functions concerning the dues excel file are enclosed in the step_dues function. They are not partitioned out as observed in the demographics excel file cleaning stage described above.</p>
+<p>The second Excel file to be read into the analysis for building a
+SIOP membership year is the dues file. The most important variable in
+the dues file specifies the date of the transaction for registration as
+a member. This date serves as classifying the member into the
+appropriate SIOP calendar year. Additionally, the dues file contains
+information concerning the type of membership that a member is either
+registering for, or renewing. All cleaning functions concerning the dues
+excel file are enclosed in the step_dues function. They are not
+partitioned out as observed in the demographics excel file cleaning
+stage described above.</p>
 <div class="section level5">
 <h5 id="membership-dues">
 <code>Membership Dues</code><a class="anchor" aria-label="anchor" href="#membership-dues"></a>
 </h5>
-<p>Membership dues describes the type of transaction that occurred. This information helps us ensure the correct value is charged to the current type of member.</p>
+<p>Membership dues describes the type of transaction that occurred. This
+information helps us ensure the correct value is charged to the current
+type of member.</p>
 <p>TODO: THE PRICING TABLE FOR SIOP MEMBERS</p>
 <ul>
 <li>
@@ -434,14 +642,20 @@
 <li>
 <strong>Type</strong>: Character</li>
 <li>
-<strong>Levels</strong>: Associate, Fellow, Member, Retired Associate, Retired Fellow, Retired Member, Student Affiliate, International Affiliate</li>
+<strong>Levels</strong>: Associate, Fellow, Member, Retired
+Associate, Retired Fellow, Retired Member, Student Affiliate,
+International Affiliate</li>
 </ul>
 </div>
 <div class="section level5">
 <h5 id="md-number">
 <code>MD Number</code><a class="anchor" aria-label="anchor" href="#md-number"></a>
 </h5>
-<p>The MD Number is back translated from the output of <code>MembershipDues</code> and categorized as a numeric value. In the future, I am not so sure this step will be required, as we can just continue to use <code>MembershipDues</code> for any type of analysis that requires the <code>MD_Number</code>.</p>
+<p>The MD Number is back translated from the output of
+<code>MembershipDues</code> and categorized as a numeric value. In the
+future, I am not so sure this step will be required, as we can just
+continue to use <code>MembershipDues</code> for any type of analysis
+that requires the <code>MD_Number</code>.</p>
 <p>TODO: VARIABLE REQUIRED OR NOT?</p>
 <ul>
 <li>
@@ -455,14 +669,19 @@
 <li>
 <strong>Type</strong>: Double (integer)</li>
 <li>
-<strong>Levels</strong>: 1 = Student affiliate, 2 = Associate, 3 = International Affiliate, 4 = Member, 5 = Fellow, 6 = Retired International, 7 = Retired International Affiliate, 8 = Retired Member, 9 = Retired Fellow</li>
+<strong>Levels</strong>: 1 = Student affiliate, 2 = Associate, 3 =
+International Affiliate, 4 = Member, 5 = Fellow, 6 = Retired
+International, 7 = Retired International Affiliate, 8 = Retired Member,
+9 = Retired Fellow</li>
 </ul>
 </div>
 <div class="section level5">
 <h5 id="student-or-professional">
 <code>Student or Professional</code><a class="anchor" aria-label="anchor" href="#student-or-professional"></a>
 </h5>
-<p>The student professor variable is linked to the <code>MD_Number</code>. It categorizes a 1, or, Student Affiliate, as a student, and all else as a professional.</p>
+<p>The student professor variable is linked to the
+<code>MD_Number</code>. It categorizes a 1, or, Student Affiliate, as a
+student, and all else as a professional.</p>
 <ul>
 <li>
 <strong>Function step name</strong>: step_dues</li>
@@ -476,66 +695,6 @@
 <strong>Type</strong>: Double (integer)</li>
 <li>
 <strong>Levels</strong>: Student, Professional</li>
-</ul>
-</div>
-<div class="section level5">
-<h5 id="interest-areas">
-<code>Interest Areas</code><a class="anchor" aria-label="anchor" href="#interest-areas"></a>
-</h5>
-<p>This variable consists of a series of three columns in the original demographics dataset. Minimal cleaning was performed, such as removing multiple categories in the first, second, or third interest area. Several members put more than one category in a single variable, for example, for int_1, somebody may have put Psychometrics and Organizational Culture. In this instance, organizational culture would have been dropped and Psychometrics retained for int_1. This is to help streamline the analytics and set expectations on the data file year after year.</p>
-<ul>
-<li>
-<strong>Function step name</strong>: step_interests</li>
-<li>
-<strong>Input Variable Name:</strong> Interest Area (first choice), Interest Area (second choice), Interest Area (third choice),</li>
-<li>
-<strong>Output Variable Name:</strong> int_1, int_2, int_3</li>
-<li>
-<strong>Format</strong>: Close ended response</li>
-<li>
-<strong>Type</strong>: character</li>
-<li>
-<strong>Levels</strong>: Coaching/Leadership Development, Testing/Assessment, Leadership, Inclusion/Diversity, Careers/Career Planning/Mentoring/Socialization/Onboarding/Retirement, Staffing, Groups/Teams, Job Analysis/Job Design/Competency Modeling, Job Attitudes/Engagement, Occupational Health/Safety/Stress &amp; Strain/Aging, Organizational Performance/Change Management/Downsizing/OD, Measurement/Statistical Techniques, Organizational Culture/Climate, Performance Appraisal/Feedback/Management/Goal-Setting, I-O Psychology Education/Professional Development, Conflict/Counterproductive Behavior/Harassment/Violence/Workplace Deviance, Personality, Global/International/Cross-Cultural Issues, Training, Research Methodology, Work and Family/Non-Work Life/Leisure/Flexible Work Arrangements, Motivation/Rewards/Compensation, Consulting Practices/Ethical Issues, Emotions/Emotional Labor, Employee Withdrawal/Retention, Strategic HR/Utility/Changing Role of HR, Job Performance/Citizenship Behavior, Technology, Legal Issues/Employment Law/Union Issues/Labor Relations, Innovation/Creativity, Judgment/Decision Making, Other, Customer Service/Consumer Psychology, Human Factors/Ergonomics, Organizational Justice, Teaching I-O Psychology/Student Affiliate Issues/Professional Development in I-O Psychology, Pro-Social</li>
-</ul>
-</div>
-<div class="section level5">
-<h5 id="involvement-seeking">
-<code>Involvement Seeking</code><a class="anchor" aria-label="anchor" href="#involvement-seeking"></a>
-</h5>
-<p>A variable asks members if they are seeking any involvement in a wide range of activities that are aligned with SIOP initiatives. Each unique category is created into a column with a 0 and 1 for whether a member possesses the inclination toward that activity.</p>
-<ul>
-<li>
-<strong>Function step name</strong>: step_involvement</li>
-<li>
-<strong>Input Variable Name:</strong> Involvement Sought</li>
-<li>
-<strong>Output Variable Name:</strong> inv_share_knowledge, inv_collaborate_on_projects, inv_conduct_research, inv_join_interdisclipinary_teams, inv_other, inv_present_at_meetings_conferences, inv_join_communities_of_interest, inv_network, inv_consult_to_business</li>
-<li>
-<strong>Format</strong>: Numeric</li>
-<li>
-<strong>Type</strong>: Double (integer)</li>
-<li>
-<strong>Levels</strong>: 0, 1</li>
-</ul>
-</div>
-<div class="section level5">
-<h5 id="organizational-affilitations">
-<code>Organizational Affilitations</code><a class="anchor" aria-label="anchor" href="#organizational-affilitations"></a>
-</h5>
-<p>A variable asks members if they are associated with any other organizational or professional affilitiations. Each level is transformed into a unique column.</p>
-<ul>
-<li>
-<strong>Function step name</strong>: step_other_orgs</li>
-<li>
-<strong>Input Variable Name:</strong> Other Organizational Affiliations, HRCI Certification: Do you hold PHR, SPHR, or GPHR certification?, SHRM Certification: Do you hold SHRM-CP or SHRM-SCP certification?, Are you a licensed psychologist?</li>
-<li>
-<strong>Output Variable Name:</strong> org_aff_AOM, org_aff_APA, org_aff_APS, org_aff_SHRM, org_aff_EAWOP, org_aff_IAAP, org_aff_CPA, org_aff_HRCI, org_aff_SHRM, licensed</li>
-<li>
-<strong>Format</strong>: Numeric</li>
-<li>
-<strong>Type</strong>: Double (integer)</li>
-<li>
-<strong>Levels</strong>: 0, 1</li>
 </ul>
 </div>
 </div>
@@ -559,7 +718,7 @@
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer>
