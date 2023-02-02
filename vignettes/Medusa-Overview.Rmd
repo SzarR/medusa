@@ -195,12 +195,16 @@ for a specific SIOP member. This variable requires a lot of cleaning due to the
 messy nature of the data. Lots of members included various acronyms, and specialized
 degree titles for this field, making the standardization and reporting tedious.
 
+Update on 02/01/2023 - We decided to do away with the include_ABD parameter
+and converted all ABD status people to a Master's degree. We also included
+the MOP degree under Masters.
+
 * __Function step name__: step_highestdegree
 * __Input Variable Name:__ Degree
 * __Output Variable Name:__ Highest_Degree
-* __Format__: Open ended response
+* __Format__: Open ended response through 2021. Then close ended response > 2021
 * __Type__: Factor
-* __Levels__: Associate, Bachelors, Doctorate, Other, ABD, Masters
+* __Levels__: Associate, Bachelors, Doctorate, Other, Masters
 
 #### `Priv_Publ`
 

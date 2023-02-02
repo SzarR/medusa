@@ -29,7 +29,7 @@ make_demo_data <- function(df,...) {
               by = "School")
 
   # Education Cleaning Stage
-  df <- step_highestdegree(df, include_ABD = TRUE)
+  df <- step_highestdegree(df)
   df <- step_privatepublic(df)
   df <- step_field(df)
   df <- step_profitnon(df)
