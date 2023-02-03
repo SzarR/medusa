@@ -15,15 +15,15 @@ build_dataset <- function(year, set_root_dir, save_output_to) {
 
   # Find files in given year
   demo_file <-
-    list_files[list_files %>% str_detect(fixed('demo', ignore_case = TRUE))]
+    list_files[list_files %>% stringr::str_detect(fixed('demo', ignore_case = TRUE))]
   dues_file <-
-    list_files[list_files %>% str_detect(fixed('dues', ignore_case = TRUE))]
+    list_files[list_files %>% stringr::str_detect(fixed('dues', ignore_case = TRUE))]
   staff_file <-
-    list_files[list_files %>% str_detect(fixed('staff', ignore_case = TRUE))]
+    list_files[list_files %>% stringr::str_detect(fixed('staff', ignore_case = TRUE))]
 
   # demographics
   df_demo <-
-    read_xlsx(path = paste0(set_root_dir, year, "/", demo_file))
+    readxl::read_xlsx(path = paste0(set_root_dir, year, "/", demo_file))
 
   if (year < '2021') {
     df_demo <- df_demo %>%
@@ -34,14 +34,14 @@ build_dataset <- function(year, set_root_dir, save_output_to) {
   dues_master_file <- NULL
   for (i in 1:length(dues_file)) {
     temp_file <-
-      read_xlsx(path = paste0(set_root_dir, year, "/", dues_file[i]))
-    dues_master_file <- bind_rows(dues_master_file, temp_file)
+      readxl::read_xlsx(path = paste0(set_root_dir, year, "/", dues_file[i]))
+    dues_master_file <- dplyr::bind_rows(dues_master_file, temp_file)
 
   }
 
   # staff
   df_staff <-
-    read_xlsx(path = paste0(set_root_dir, year, "/", staff_file))
+    readxl::read_xlsx(path = paste0(set_root_dir, year, "/", staff_file))
 
   # Demographic cleaning
   df_demo_clean <- medusa::make_demo_data(df_demo)
