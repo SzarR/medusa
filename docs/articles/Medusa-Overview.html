@@ -40,7 +40,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">medusa</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">2.2.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">2.2.1</span>
       </span>
     </div>
 
@@ -110,6 +110,31 @@ below:</p>
 <li>SID is a unique identifer, created by the SIOP AO and serves as a
 unique key.</li>
 </ul>
+</div>
+<div class="section level2">
+<h2 id="the-whole-game">The Whole Game<a class="anchor" aria-label="anchor" href="#the-whole-game"></a>
+</h2>
+<p>The information below serves as a deep dive into what the medusa
+package does. However, if you are simply looking to quickly hit the road
+running, medusa does contain a function within itself,
+<code>build_dataset</code>, that allows you to output a cleaned CSV file
+to a location of your choice. Simply feed it the arguments required, of
+which there are currently three:</p>
+<ul>
+<li><p><code>year</code> - What year would you like to clean? Current
+acceptable range is 2017-2022.</p></li>
+<li><p><code>set_root_dir</code> - this specifies the location of the
+folder that contains the three pertinent types of files within them: the
+various dues files, the single demographic file, and the single staff
+file. All must be present, in .xlsx format, for it to be picked up
+appropriately by medusa.</p></li>
+<li><p><code>save_output_to</code> - Where would you like the cleaned
+CSV to be saved to?</p></li>
+</ul>
+<p>Just as clarification, this function is not meant to output a tibble
+within an R environment. It will not return anything when running
+successfully, but you should see the csv file in the location that you
+specified in the function.</p>
 </div>
 <div class="section level2">
 <h2 id="data-cleaning-steps">Data Cleaning Steps<a class="anchor" aria-label="anchor" href="#data-cleaning-steps"></a>

@@ -1,3 +1,13 @@
+#' Runs the entire data cleaning procedure for a given year
+#'
+#' @param year The SIOP year to filter on
+#' @param set_root_dir point the function to the folder that contains each year of SIOP data to clean
+#' @param save_output_to set the CSV save out location
+#'
+#' @return CSV file
+#' @export
+#'
+#' @examples build_dataset(year = '2017', set_root_dir =/data/Raw/", save_output_to = "/Users/robs/Desktop/")
 build_dataset <- function(year, set_root_dir, save_output_to) {
   # List the components
   list_years <- list.files(set_root_dir)

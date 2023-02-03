@@ -55,7 +55,6 @@ step_highestdegree <- function(df) {
             str_detect(Degree, "Other") |
             str_detect(Degree, "PgDip") |
             str_detect(Degree, "grad program") ~ "Other",
-
           is.na(Degree) ~ "Not Specified",
           TRUE ~ 'Other'
         )
