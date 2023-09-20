@@ -27,6 +27,7 @@ step_other_orgs <- function(df) {
     pivot_longer(starts_with("org_")) %>%
     pull(value) %>%
     unique() %>%
+    str_replace_all("\\, ", "_")%>%
     na.omit()
 
   orgs_names <- str_c("org_aff_", orgs_list)
