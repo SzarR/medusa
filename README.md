@@ -42,6 +42,8 @@ Current counts after data cleaning for each of the years equate to:
 -   2019: 9,842
 -   2020: 9,660
 -   2021: 9,100
+-   2022: 9,190
+-   2023: 9,583
 
 ## Example
 
