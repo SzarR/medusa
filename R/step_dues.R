@@ -36,9 +36,10 @@ step_dues <- function(df, year) {
         case_when(
           Membership_Dues == "Student Affiliate" ~ 1,
           Membership_Dues == "Associate" ~ 2,
-          Membership_Dues == "Affiliate" ~ 2,
-          Membership_Dues == "International Affiliate" ~ 3,
-          Membership_Dues == "International Associate" ~ 3,
+          Membership_Dues == "Affiliate" ~ 3,
+          # Do not need to differentiate across US vs. international
+          #Membership_Dues == "International Affiliate" ~ 3,
+          #Membership_Dues == "International Associate" ~ 3,
           Membership_Dues == "Member" ~ 4,
           Membership_Dues == "Fellow" ~ 5,
           Membership_Dues == "Retired International" ~ 6,
